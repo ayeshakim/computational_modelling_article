@@ -1,0 +1,106 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: draft_computational_modelling_paper.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bib_computational_modelling.bib
+Warning--I didn't find a database entry for "gunes2011continuous"
+Warning--I didn't find a database entry for "karpouzis2007modeling"
+Warning--I didn't find a database entry for "shin2007facial"
+Warning--I didn't find a database entry for "bahn1997facial"
+Warning--I didn't find a database entry for "Caridakis2008"
+Warning--I didn't find a database entry for "douglas2008sensitive"
+Warning--I didn't find a database entry for "kulic2007affective"
+Warning--I didn't find a database entry for "wollmer2010context"
+Warning--I didn't find a database entry for "kanluan2008audio"
+Warning--I didn't find a database entry for "grimm2008vera"
+Warning--I didn't find a database entry for "Hupont10"
+Warning--I didn't find a database entry for "Whissell89"
+Warning--I didn't find a database entry for "hall2009weka"
+Warning--I didn't find a database entry for "nicolaou2011output"
+Warning--I didn't find a database entry for "dahmane2011continuous"
+Warning--I didn't find a database entry for "mckeown2010semaine"
+Warning--I didn't find a database entry for "martinez2012model"
+Warning--I didn't find a database entry for "lee2009modeling"
+Warning--I didn't find a database entry for "wollmer2008abandoning"
+Warning--I didn't find a database entry for "gunes2010dimensional"
+Warning--I didn't find a database entry for "merla2007thermal"
+Warning--I didn't find a database entry for "nhan2010classifying"
+Warning--I didn't find a database entry for "schmidt2001human"
+Warning--I didn't find a database entry for "valstar2006fully"
+Warning--I didn't find a database entry for "friedman2000additive"
+Warning--I didn't find a database entry for "Pantic05"
+Warning--I didn't find a database entry for "gunes2009automatic"
+Warning--I didn't find a database entry for "gunes2006bimodal"
+Warning--I didn't find a database entry for "ayeshahakimshapemodelpaper"
+Warning--I didn't find a database entry for "ayeshahakimvonmises"
+Warning--I didn't find a database entry for "ACTORIZINGSPEAKER"
+Warning--I didn't find a database entry for "LEXICALANDEMOTIONALVARIABILITIESOBSERVEDINFACIALEXPRESSIONS"
+Warning--I didn't find a database entry for "berens2009circstat"
+Warning--I didn't find a database entry for "mardia1972statistics"
+Warning--I didn't find a database entry for "gill2010circular"
+Warning--I didn't find a database entry for "plutchik1980emotion"
+Warning--I didn't find a database entry for "russell1997shall"
+Warning--I didn't find a database entry for "jammalamadaka2001topics"
+Warning--I didn't find a database entry for "fisher1995statistical"
+Warning--I didn't find a database entry for "collett1981discriminating"
+Warning--I didn't find a database entry for "downs1967some"
+Warning--I didn't find a database entry for "stephens1963random"
+Warning--I didn't find a database entry for "chang1996computation"
+Warning--I didn't find a database entry for "qian2004hurst"
+Warning--I didn't find a database entry for "blumberg1991patterns"
+Warning--I didn't find a database entry for "terzopoulos1990physically"
+Warning--I didn't find a database entry for "watson1982circular"
+Warning--I didn't find a database entry for "kuiper1960tests"
+Warning--I didn't find a database entry for "hakim2013analysis"
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 41 entries,
+            4039 wiz_defined-function locations,
+            1116 strings with 15643 characters,
+and the built_in function-call counts, 31425 in all, are:
+= -- 2494
+> -- 682
+< -- 284
++ -- 404
+- -- 108
+* -- 1457
+:= -- 4601
+add.period$ -- 91
+call.type$ -- 41
+change.case$ -- 34
+chr.to.int$ -- 660
+cite$ -- 41
+duplicate$ -- 2243
+empty$ -- 2692
+format.name$ -- 138
+if$ -- 7399
+int.to.chr$ -- 0
+int.to.str$ -- 41
+missing$ -- 366
+newline$ -- 146
+num.names$ -- 41
+pop$ -- 852
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 2505
+stack$ -- 0
+substring$ -- 1570
+swap$ -- 1835
+text.length$ -- 64
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 41
+warning$ -- 0
+while$ -- 137
+width$ -- 43
+write$ -- 407
+(There were 49 warnings)

@@ -232,7 +232,7 @@ These two approaches cover the categorical as well as continuous attributes of e
 
 The evaluation-level limitation of the selected dataset is associated with its utterance-based annotation technique. Assuming the emotional content did not change much within an utterance (duration $\approx$ 4.5 seconds), the same label (or mixture of labels) was assigned to each frame in that utterance. The `silent' frames and those containing sounds of active listening like `mmhh' were not annotated at all. Another problem of the chosen dataset is that the human evaluators were sometimes inconsistent in labelling the data, since each one of them perceived and evaluated the emotions associated to an utterance in his own way. Due to the subjective nature of emotions, the inter-evaluator inconsistency is a common problem of all emotion datasets.
 
-\paragraph{Data Preprocessing}
+\subsubsection{Data Preprocessing}
 \label{sec_data_preprocessing}
 
 We used the locations of the marker points in 3D as the basis of our analysis, and chose $5,000$ frames of each of five emotions (happiness, excitement, anger, frustration, and sadness) and neutral state for each of the ten actors to form a training set of $300,000$ frames. It should be noted that the marker points were already aligned to make the nose marker at the center of each frame that removed any translation effects. The rotational effects were compensated by multiplying each frame by a rotational matrix. For details about markers alignment, refer to~\cite{Busso08}. 
@@ -437,72 +437,41 @@ We have already calculated the Mahalanobis distance of each test frame to each o
 
 \section{Results}
 \label{sec_results}
-Fig.~\ref{fig_emotionspacemodel} plots the locations of the basic emotions in the activation-evaluation space using the estimated mean positions of the training set. We observed that the estimated directions are quite close to those specified by Whissell in~\cite{Whissell89}, except that of neutral state. This seems to be because mostly the human evaluators misinterpreted neutral as sadness and assigned a low activation value to the neutral state. According to the values listed by Whissell, neutral lies close to the centre of circle that corresponds to both valence and activation close to zero (see Table \ref{tab:angles} for numerical values). To correct the position of the neutral state, we set the intensities of points labelled as neutral to be close to zero (near the centre) in the activation-evaluation space. This shift does not effect the position of other emotions because the neutral state represents the `no-emotion' state whose position should be uncorrelated with that of all emotional states.
 
-%To correct the position of the neutral state, we deliberately shift it to the centre (close to zero) in the activation-evaluation space. This shift does not effect the position of other emotions because the neutral state represents the `no-emotion' state whose position should be uncorrelated with that of all emotional states.
-%except that of neutral which corresponds to a very passive emotional state with very low intensity (see Table \ref{tab:angles} for numerical values). 
-\begin{figure}[tp!]
-      \centering
-      \includegraphics[scale=0.45]{figures/Ch6/emotion_space_model_4.png}
-      \caption{The position of each basic emotion (based on the training set) in the activation-evaluation space.}
-      \label{fig_emotionspacemodel}
-\end{figure}
+% Edit Table mean emotions
 
-
-Based on these positions for the basic emotions we were now able to compute the parameters of the mixture model and test it using initially single utterances with only one labelled emotion, and then full conversations with several emotion transitions. Fig.~\ref{fig_mixturemodelpdf}(a) shows the von Mises probability distributions of all emotions in the mixture model. The $x$-axis shows the emotion directions (angles in degrees) (see Table \ref{tab:angles} for numerical values) and the $y$-axis shows the von Mises probability densities for each distribution in the mixture model. It is clear that there is a big overlap between the distributions of anger and frustration as well as of happiness and excitement. Sadness lies quite close to the anger/frustration distribution. This is to be expected based on the Whissell angles. Fig.~\ref{fig_mixturemodelpdf}(b) shows the von Mises probability distributions characterising one frame of an utterance labelled as [angry, angry, frustrated] by three human experts.
-
-We use the valence and activation values assigned to each utterance by three human experts to estimate the ground truth direction and intensity of emotion associated with that utterance, which we can compare to our results. In order to measure the association between two circular variables (the ground truth direction and that estimated by the model), we have used a measure of circular sample correlation coefficient $(\rho_{c,n})$~\cite{jammalamadaka2001topics}. If $(\alpha_{1},\beta_{1}),\cdots,(\alpha_{n},\beta_{n})$ is a random sample, $\rho_{c,n}$ is defined as:
-
-\begin{equation}
-\rho_{c,n}=\frac{\sum \limits_{i=1}^n \sin(\alpha_{i}-\mu)\sin(\beta_{i}-\nu)}{\sqrt{ \sum \limits_{i=1}^n \sin^{2}(\alpha_{i}-\mu))\sin^{2}(\beta_{i}-\nu)}}
-\end{equation}
-where $\mu$ and $\nu$ are the sample mean directions.
-
-\begin{table}[tp!]
-\caption{Angular values from Whissell's study and those estimated by the models.}
-\begin{center}
-\begin{tabular}{|l|c|c|}
+\begin{table*}[tp!]
+\caption{Mean intensity of five emotions and neutral state estimated using dependent and independent models both with and without performing speaker-normalisation.}
+\centering
+\begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|>{\centering\arraybackslash}p{2.5cm}| >{\centering\arraybackslash}p{3.2cm}|>{\centering\arraybackslash}p{2.5cm}|}
 \hline
-Emotions & Whissell's Angles & Estimated Angles \\
- & (in degrees) & (in degrees) \\
+\multicolumn{7}{|c|}{\textbf{Without Normalisation}} \\
 \hline
-Sadness & 108.5 &  131.10  \\
+ & Neutral &  Anger & Frustration & Happiness & Excitement & Sadness  \\
 \hline
-Frustration & 200.6 &  188.48  \\
+Dependent Model & 0.3095 &  0.5167 & 0.6066 & 0.4168 & 0.6152 & 0.4968  \\
 \hline
-Anger & 212 &  194.84  \\
+Independent Model & 0.1286 & 0.2698 &  0.1809 & 0.2704 & 0.2278 & 0.1663  \\
 \hline
-Excitement & 311 &  330.58  \\
+\multicolumn{7}{|c|}{\textbf{With Reference-based Speaker Normalisation}} \\
 \hline
-Happiness & 323.7 &  341.45  \\
+Dependent Model & 0.3095 &  0.5167 & 0.6066 & 0.4168 & 0.6152 & 0.4968  \\
 \hline
-Neutral & 0 &   89.23 (inclined towards \\ 
- & & \emph{very passive} state) \\
+Independent Model & 0.1693 & 0.3325 &  0.2759 & 0.3523 & 0.3628 & 0.2414  \\
 \hline
 \end{tabular}
-\end{center}
-\label{tab:angles}
-\end{table}
+\label{table_mean_emotions}
+\end{table*}
 
-\begin{figure*}[t!]
-\begin{center}
-		\subfloat[]
-		{ 
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/Ch6/joint_probability_density_function_curves.png}
-		}
-		%\\
-		\subfloat[]
-		{ 
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/Ch6/218_angry_von_mises_curve.png}
-		}
-\end{center}
-		\caption{(a) von Mises Probability Distributions in the mixture model with unit weight, (b) von Mises Probability Distributions characterising one frame of an utterance labelled as [angry, angry, frustrated] by three human experts.}
-		\label{fig_mixturemodelpdf}
-\end{figure*}
+%Plot instead of Table?
 
-Only one ground truth measure of direction and intensity is available for each full utterance, while the model estimates the directions and intensity for each frame. In order to measure $\rho_{c,n}$, we generate a sample of (n=$1000$) random variables based on the von Mises probability density functions for both distributions (ground truth and model estimation). $\rho_{c,n}$ shows a significantly high correlation between samples of ground truth direction and those estimated by the model for each conversation. We also applied the pairwise \textit{t}-test on the intensity values and found that the intensity calculated by ground truth values and those estimated by the mixture model are not statistically different $(p>0.05)$. Fig.~\ref{fig_comparison} presents the visual fit of ground truth mean directions and mean intensities with those estimated by the model for the test set consisting of seven different conversations.
+Table~\ref{table_mean_emotions} lists the mean locations of the five emotions and neutral state in the activation-evaluation space based on different training sets. For the training data of the first speaker only, the mean intensity of five emotions and neutral state remain same with and without normalisation. For the training data of all speakers together, the mean intensity of emotions decreases without normalisation caused by the speaker variation  leading to confused emotion recognition. The mean intensity increases after reference-based speaker normalisation.
+
+We observed that the estimated directions of each emotion based on training data are quite close to those specified by Whissell in~\cite{Whissell89}, except that of neutral state.  According to the values listed by Whissell, neutral lies close to the centre of circle that corresponds to both valence and activation close to zero. In our data, since the direction of neutral is calculated as weighted average of all emotions its more inclined towards anger/frustration. One reason is that there are more emotions on the side of negative emotions than the positive emotions. Other reason is based on the fact that mostly the human evaluators misinterpreted neutral as frustration or sadness. This direction of neutral state does not effect the position of other emotions because the neutral state represents the `no-emotion' state whose position should be uncorrelated with that of all emotional states.
+
+%-----------------------
+
+Based on these positions for the basic emotions we were now able to compute the parameters of the mixture model and test it using initially single utterances with only one labelled emotion, and then full dialogs with several emotion transitions. We use the valence and activation values assigned to each utterance by three human experts to estimate the ground truth direction and intensity of emotion associated with that utterance, which we can compare to our results~\cite{ayesha von mises}. 
 
 \begin{figure*}[tp!]
 \begin{center}
@@ -537,7 +506,7 @@ D_{n}^{+}=\max[S_{n}(\theta)-F(\theta)], \;\;\;\; D_{n}^{-}=\max[F(\theta)-S_{n}
 
 $D_{n}^{+}$ and $D_{n}^{-}$ are the discrepancy statistics, where $D_{n}^{+}$ is the maximum vertical distance of $S_{n}(\theta)$ from $F(\theta)$ when the distance is measured above $F(\theta)$, while $D_{n}^{-}$ is the maximum distance measured below $F(\theta)$. Both statistics $D_{n}^{+}$ and $D_{n}^{-}$ depend on the choice of zero direction, but their sum ($V_{n}$) is invariant under rotation. This makes the Kuiper's statistic equally sensitive at the median as well as at the tails~\cite{kuiper1960tests, mardia1972statistics}.
 
-Fig.~\ref{fig_kuiper} shows the model estimated cdf of each of the emotions in the mixture model separately and the empirical cdf for the first conversation in the testing set. It can be seen that the model estimated cdf for anger (Fig.~\ref{fig_kuiper}(a)) as well as that of frustration (Fig.~\ref{fig_kuiper}(b)) fits the empirical cdf well. However, the cdfs for happiness (Fig.~\ref{fig_kuiper}(c)), excitement (Fig.~\ref{fig_kuiper}(d)), and sadness (Fig.~\ref{fig_kuiper}(e)) show quite high deviation from the empirical cdf. This suggests that the empirical distribution and the model estimated distributions of anger as well as frustration are not statistically different. On the basis of this, we may say that the first conversation in the testing set is an angry/frustrated conversation.
+Fig.~\ref{fig_kuiper} shows the model estimated cdf of each of the emotions in the mixture model separately and the empirical cdf for the first dialog in the testing set. It can be seen that the model estimated cdf for anger (Fig.~\ref{fig_kuiper}(a)) as well as that of frustration (Fig.~\ref{fig_kuiper}(b)) fits the empirical cdf well. However, the cdfs for happiness (Fig.~\ref{fig_kuiper}(c)), excitement (Fig.~\ref{fig_kuiper}(d)), and sadness (Fig.~\ref{fig_kuiper}(e)) show quite high deviation from the empirical cdf. This suggests that the empirical distribution and the model estimated distributions of anger as well as frustration are not statistically different. On the basis of this, we may say that the first conversation in the testing set is an angry/frustrated conversation.
 
 \begin{figure*}[htp!]
 \begin{center}
@@ -551,6 +520,11 @@ Fig.~\ref{fig_kuiper} shows the model estimated cdf of each of the emotions in t
 		\centering
 		\includegraphics[width=0.3\textwidth]{figures/Ch6/separate_cdfs/cdf_with_fru_up1.png}
 		}
+		\subfloat[cdf of sadness]
+		{ 
+		\centering
+		\includegraphics[width=0.3\textwidth]{figures/Ch6/separate_cdfs/cdf_with_sad_up1.png}
+		}
 		\\
 		\subfloat[cdf of happiness]
 		{ 
@@ -562,48 +536,13 @@ Fig.~\ref{fig_kuiper} shows the model estimated cdf of each of the emotions in t
 		\centering
 		\includegraphics[width=0.3\textwidth]{figures/Ch6/separate_cdfs/cdf_with_exc_up1.png}
 		}
-		\\
-		\subfloat[cdf of sadness]
-		{ 
-		\centering
-		\includegraphics[width=0.3\textwidth]{figures/Ch6/separate_cdfs/cdf_with_sad_up1.png}
-		}
 \end{center}
-		\caption{Illustration of the Kuiper's statistic. Blue line is model estimated CDF of (a) anger, (b) frustration, (c) happiness, (d) excitement, and (e) sadness, red line is an empirical CDF of the first conversation in the testing set, and the green line is the Kuiper's statistic.}
+		\caption{Illustration of the Kuiper's statistic. Blue line is model estimated CDF of (a) anger, (b) frustration, (c) sadness, (d) happiness, and (e) excitement, red line is an empirical CDF of the first conversation in the testing set, and the green line is the Kuiper's statistic.}
 		\label{fig_kuiper}
 \end{figure*}
 
-Fig.~\ref{fig_conv_emotion_space_model} shows the mapping of continuous emotions through time corresponding to a single utterance (Ses01F$\_$script02$\_$1$\_$F007) in the activation-evaluation space. The colour variation represents time, ranging from red (dark in grayscale) to yellow (light in grayscale). The utterance is labelled as angry/angry/frustrated by the three human observers, which matches the observation well. The figure also plots the ground truth values of the mean direction and intensity and those estimated by the model. The analysis of continuous emotions through time in the activation-evaluation space is described in Chapter~7.
+Figs.~\ref{fig_comparison} and~\ref{fig_kuiper} show that the proposed mixture model fits the data well, despite the underlying problems with the ground truth labelling (that is, the fact that there is only one label associated with each utterance, which lasts for many frames while the model estimates the values for each frame). Furthermore, all `silent' frames are unlabelled in the conversations, while the model estimates the values for those frames as well.  The intensity values do not fit as well as the directions because the small number of samples leads to high concentration around the mean as compared to the large number of frames in the testing set.
 
-\begin{figure}[t!]
-      \centering
-      \includegraphics[scale=0.4]{figures/Ch6/cont_emotion_transitions.png}
-      \caption{The mapping of continuous emotions during an utterance on the activation-evaluation space, along with the mean ground truth direction and intensity and those estimated by the model. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).}
-      \label{fig_conv_emotion_space_model}
-\end{figure}
-
-Figs.~\ref{fig_comparison},~\ref{fig_kuiper}, and~\ref{fig_conv_emotion_space_model} show that the proposed mixture model fits the data well, despite the underlying problems with the ground truth labelling (that is, the fact that there is only one label associated with each utterance, which lasts for many frames while the model estimates the values for each frame). Furthermore, all `silent' frames are unlabelled in the conversations, while the model estimates the values for those frames as well.  The intensity values do not fit as well as the directions because the small number of samples leads to high concentration around the mean as compared to the large number of frames in the testing set.
-
-\begin{table*}[thp!]
-\centering
-\begin{tabular}{|p{3cm}|>{\centering\arraybackslash}p{3cm}| >{\centering\arraybackslash}p{3cm}|}
-\hline
-& Dependent Model & Independent Model
-\\
-\hline
-Without Normalisation &  70.3503 &  63.2036
-\\
-\hline
-With Normalisation & 56.1678 & 78.9750
-\\
-\hline
-\end{tabular}
-\caption{Mean accuracy dependent and independent model with and without reference-based speaker normalisation.}
-\label{table_accuracy}
-\end{table*}
-
-\subsection{Without Normalisation}
-\label{sec_without_normalisation}
 \begin{figure*}[!htp]
 \begin{center}
 \subfloat[Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition without normalisation. Dependent Model.]
@@ -617,46 +556,42 @@ With Normalisation & 56.1678 & 78.9750
 \centering
 \includegraphics[width=0.5\textwidth]{figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_full_map_not_0_1.jpg}
 }
+\\
+\subfloat[Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Dependent Model.]
+{
+\centering
+\includegraphics[width=0.5\textwidth]
+{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_full_map_not_0_1_nomeans.jpg}
+}
+\subfloat[Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Independent Model.]
+{
+\centering
+\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_full_map_not_0_1_nomeans.jpg}
+}
 \end{center}
-\caption{Without normalisation, dependent versus independent model}
-\label{fig_without_norm_depen_vs_indepen}
+\caption{With and Without normalisation, dependent versus independent model}
+\label{fig_depen_vs_indepen}
 \end{figure*}
 
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[Gamma neutral versus Closest Emotion. Dependent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/without_normalisation/Ses01F_impro01_actor1_neu_max.jpg}
-}
-%\\
-\subfloat[Gamma neutral versus Sum of other gamma emotions. Dependent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/without_normalisation/Ses01F_impro01_actor1.jpg}
-}
-\end{center}
-\caption{Gammas of Dependent Model}
-\label{fig_without_norm_depen_vs_indepen}
-\end{figure*}
+Fig.~\ref{fig_depen_vs_indepen} shows the mapping of continuous emotions through time corresponding to a full continuous dialog (Ses01F$\_$impro01) in the activation-evaluation space. The colour variation represents time, ranging from red (dark in grayscale) to yellow (light in grayscale). The dialog has 16 female turns consisting of $13835$ frames. Most of the turns are labelled as angry/angry/frustrated by the three human observers, which matches the observation well. Fig.~\ref{fig_depen_vs_indepen}(a) shows mapping based on speaker-dependent model without normalisation, Fig.~\ref{fig_depen_vs_indepen}(b) shows mapping based on speaker-independent model without normalisation, Fig.~\ref{fig_depen_vs_indepen}(c) shows mapping based on speaker-dependent model with reference-based normalisation, and Fig.~\ref{fig_depen_vs_indepen}(d) shows mapping based on speaker-independent model with reference-based normalisation.
 
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[Gamma neutral versus Closest Emotion. Independent Model.]
-{
+\begin{table*}[thp!]
 \centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_neu_max.jpg}
-}
-%\\
-\subfloat[Gamma neutral versus Sum of other gamma emotions. Independent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/without_normalisation/Ses01F_impro01_actor2_10.jpg}
-}
-\end{center}
-\caption{Gammas of Independent Model}
-\label{fig_without_norm_depen_vs_indepen}
-\end{figure*}
+\begin{tabular}{|p{3cm}|>{\centering\arraybackslash}p{3cm}| >{\centering\arraybackslash}p{3cm}|}
+\hline
+& Dependent Model & Independent Model
+\\
+\hline
+Without Normalisation &  70.3503 &  63.2036
+\\
+\hline
+With Normalisation & 56.1678 & \textbf{78.9750}
+\\
+\hline
+\end{tabular}
+\caption{Mean accuracy dependent and independent model with and without reference-based speaker normalisation.}
+\label{table_accuracy}
+\end{table*}
 
 \begin{figure*}[!htp]
 \begin{center}
@@ -682,85 +617,7 @@ With Normalisation & 56.1678 & 78.9750
 \label{fig_without_norm_depen_vs_indepen}
 \end{figure*}
 
-\subsection{With Reference-based Normalisation}
-\label{sec_with_normalisation}
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Dependent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_full_map_not_0_1_nomeans.jpg}
-}
-%\\
-\subfloat[Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Independent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_full_map_not_0_1_nomeans.jpg}
-}
-\end{center}
-\caption{With normalisation, dependent versus independent model}
-\label{fig_with_norm_depen_vs_indepen}
-\end{figure*}
-
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[Gamma neutral versus Closest Emotion. Dependent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_neu_max.jpg}
-}
-%\\
-\subfloat[Gamma neutral versus Sum of other gamma emotions. Dependent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1.jpg}
-}
-\end{center}
-\caption{Gammas of Dependent Model}
-\label{fig_with_norm_depen_vs_indepen}
-\end{figure*}
-
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[Gamma neutral versus Closest Emotion. Independent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_neu_max.jpg}
-}
-%\\
-\subfloat[Gamma neutral versus Sum of other gamma emotions. Independent Model.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10.jpg}
-}
-\end{center}
-\caption{Gammas of Independent Model}
-\label{fig_with_norm_depen_vs_indepen}
-\end{figure*}
-
-%\begin{figure*}[!htp]
-%\begin{center}
-%\subfloat[All gamma emotions]
-%{
-%\centering
-%\includegraphics[width=0.33\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_gamma_emo.jpg}
-%}
-%%\\
-%\subfloat[All gamma emotions excluding neutral]
-%{
-%\centering
-%\includegraphics[width=0.33\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_gamma_emo_excluding_neu.jpg}
-%}
-%%\\
-%\subfloat[Gamma neutral]
-%{
-%\centering
-%\includegraphics[width=0.33\textwidth]{figures/new_results/with_ref_normalisation/Ses01F_impro01_gamma_neutral.jpg}
-%}
-%\end{center}
-%\caption{Gammas of all emotions without normalisation}
-%\label{fig_with_norm_depen_vs_indepen}
-%\end{figure*}
+Explain Gamma
 
 \section{Analysis of Emotion Dynamics}
 \label{sec_analysis}
@@ -794,8 +651,8 @@ The paths of emotional expressions are observed in the activation-evaluation spa
 
 Positively correlated emotions are those that lie close to each other (less than $90\degree$ divergence) in the activation-evaluation space. Uncorrelated emotions correspond to the emotions that lie at $90\degree$ divergence, while the negatively correlated emotions corresponds to the emotions which are $180\degree$ apart in the activation-evaluation space. 
 
-\subsection{Hypotheses Testing}
-\label{sec_hypotheses_testing}
+\subsection{Evaluation}
+\label{sec_evaluation}
 
 Within the following section the methods used to test the proposed hypotheses are presented, together with the results of those tests.
 
@@ -814,10 +671,6 @@ $\dot{\theta_{t}}=\theta_{t}-\theta_{t-1}$  \\
 
 The Hurst exponent is a statistical measure of persistence and predictability of a time series, calculated by rescaled range $\left(\frac{R_{t}}{S_{t}}\right)$ analysis, where $R_{t}$ is the rescaled range and $S_{t}$ is the standard deviation of the time series. The calculation of the rescaled range $R_{t}$ of the time series will be described shortly. The greater the value of $H$ $(0.5<H<1)$, the smoother the time series, $H=0.5$ means a random time series. We plotted the the Hurst exponent as a measure of smoothness of emotion trajectories in the activation-evaluation space for each conversation in the testing set and got all values close to $1$~\cite{ayesha hakim analysis paper}. We estimated $H$ for the time series representing the size of `change' between pairs of consecutive points in the space as a function of valence and activation. Suppose $X_{t}$ denotes the time series where $t=2,3,\cdots,n$ and $n=$ total number of frames in the video. The size of `change' for each frame is calculated as the Euclidean distance between the time derivative of valence $(\dot{V_{t}})$ and the time derivative of activation $(\dot{A_{t}})$ in the activation-evaluation space:
 
-%\begin{center}
-%$\dot{V_{t}}=\parallel V_{t}-V_{t-1} \parallel$  \\
-%$\dot{A_{t}}=\parallel A_{t}-A_{t-1} \parallel$ \\
-%\end{center}
 \begin{center}
 $\dot{V_{t}}= V_{t}-V_{t-1} $  \\
 $\dot{A_{t}}= A_{t}-A_{t-1} $ \\
@@ -874,7 +727,7 @@ According to differential emotion theory, each discrete emotion is related to ce
 
 % Update the figure name
 
-While looking at  continuous trajectories in the activation-evaluation space (e.g., Fig.~\ref{fig_con_emo_traj_color_up}), we noticed some patterns of emotion transitions. We fitted regression lines to the trajectories among six emotions (neutral, happiness, excitement, anger, frustration, and sadness). There are 15 possible symmetric paths among the six emotions, but the regression analysis shows that actually only nine paths are represented for all possible transitions among these emotions. For instance, the \emph{smiling} expression (getting happy) shows a linear relationship of valence and activation between neutral and happiness. The onset of smiling occurs at neutral, reaches apex at some intensity of happiness and returns to neutral for offset. In the case of \emph{laughing}, which is another expression of happiness, the same pattern repeats several times depends on its duration and intensity.
+While looking at  continuous trajectories in the activation-evaluation space (e.g., Fig.~\ref{fig_con_emo_traj_color_up}), we noticed some patterns of emotion transitions. We fitted regression lines to the trajectories among six emotions (neutral, happiness, excitement, anger, frustration, and sadness). There are 15 possible symmetric paths among the six emotions, but the regression analysis shows that actually only seven paths are represented for all possible transitions among these emotions. For instance, the \emph{smiling} expression (getting happy) shows a linear relationship of valence and activation between neutral and happiness. The onset of smiling occurs at neutral, reaches apex at some intensity of happiness and returns to neutral for offset. In the case of \emph{laughing}, which is another expression of happiness, the same pattern repeats several times depends on its duration and intensity.
 
 \begin{figure*}[!htp]
 \begin{center}
@@ -896,115 +749,45 @@ While looking at  continuous trajectories in the activation-evaluation space (e.
 
 By observing the trajectories between two uncorrelated and negatively correlated emotional states, we found that the transition between these states tends to pass through the neutral state. The intensity of the current emotion must decrease to neutral (shown as linear motion along a radial line) before the intensity of the next emotion increases. Fig.~\ref{fig_e1_to_e2}(a) shows a trajectory followed by the transition from excitement to frustration. However, the positively correlated emotions (such as anger and frustration, as well as happiness and excitement) may move from one state to another with slight change in intensity and angle simultaneously, as shown in Fig.~\ref{fig_e1_to_e2}(b). These findings are also supported by the mechanical properties of facial dermal tissues~\cite{terzopoulos1990physically}. Under low stress (transition between two positively correlated emotions), dermal tissue applies low resistance to stretch as the collagen fibres uncoil in the direction of the strain. However, under high stress conditions (transition between two negatively or uncorrelated emotions), the elastin fibres behave like elastic springs to return the collagen fibres to their original no-stress condition. According to these properties, to express a very different emotion the facial muscles have to pass through a `no-stress' condition.
 
-\begin{table*}[ht!]
+\begin{table}[ht!]
 \centering
-\begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|>{\centering\arraybackslash}p{2.5cm}| >{\centering\arraybackslash}p{3.2cm}|>{\centering\arraybackslash}p{2.5cm}|}
+\begin{tabular}{|p{3cm}|>{\centering\arraybackslash}p{1.2cm}| >{\centering\arraybackslash}p{1.2cm}|>{\centering\arraybackslash}p{1.2cm}|}
 \hline
-\multicolumn{2}{|l|}{\textbf{E1}} & \textbf{E2} & \textbf{Linear $(R^{2})$} & \textbf{Quadratic $(R^{2})$} & \textbf{Cubic $(R^{2})$} 
+\textbf{Emotion Transition} & \textbf{Linear $(R^{2})$} & \textbf{Quadratic $(R^{2})$} & \textbf{Cubic $(R^{2})$} 
 \\
 \hline
-\multicolumn{6}{|c|}{\textbf{Neutral}} 
+Neutral-Anger & 0.9131 &  0.9297 & 0.9139
 \\
 \hline
-\multicolumn{2}{|l|}{Neu} & Ang & 0.9131 &  0.9297 & 0.9139
+Neutral-Frustration & 0.9642 & 0.9854 & 0.9924
 \\
 \hline
-\multicolumn{2}{|l|}{Neu} & Fru & 0.9642 & 0.9854 & 0.9924
+Neutral-Happiness & 0.9223 & 0.9323 & 0.9418
 \\
 \hline
-\multicolumn{2}{|l|}{Neu} & Hap & 0.9223 & 0.9323 & 0.9418
+Neutral-Excitement &  0.9374 & 0.9383 & 0.9388
 \\
 \hline
-\multicolumn{2}{|l|}{Neu} & Exc &  0.9374 & 0.9383 & 0.9388
+Neutral-Sadness & 0.902 &  0.9144 & 0.9164
 \\
 \hline
-\multicolumn{2}{|l|}{Neu} & Sad & 0.902 &  0.9144 & 0.9164
+Anger-Frustration & 0.0922 & 0.6494 & 0.6497
 \\
 \hline
-\multicolumn{6}{|c|}{\textbf{Negatively Correlated Emotions}}
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Hap & 0.2897 & 0.6803 & 0.6856
-\\
-\hline
-Ang & Neu &  & 0.9595 & 0.9632 & 0.9673
-\\
-\hline
- & Neu & Hap & 0.9639 & 0.9967 & 0.997
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Exc & 0.0154 & 0.6147 & 0.6897
-\\
-\hline
-Ang & Neu &  & 0.9656 & 0.9839 & 0.984
-\\
-\hline
- & Neu & Exc & 0.8946 & 0.8969 & 0.8995
-\\
-\hline
-\multicolumn{2}{|l|}{Fru} & Hap & 0.2399 & 0.4939 & 0.4981
-\\
-\hline
-Fru & Neu &  & 0.9768 & 0.9811 & 0.9839
-\\
-\hline
- & Neu & Hap & 0.9296 & 0.9362 & 0.9684
-\\
-\hline
-\multicolumn{2}{|l|}{Fru} & Exc & 0.0504 & 0.4826 & 0.6628
-\\
-\hline
-Fru & Neu &  & 0.7357 & 0.7733 & 0.7894
-\\
-\hline
- & Neu & Exc & 0.8601 & 0.897 & 0.8983
-\\
-\hline
-\multicolumn{2}{|l|}{Sad} & Hap & 0.0604 & 0.7529 & 0.7902
-\\
-\hline
-Sad & Neu &  & 0.91 & 0.9138 & 0.9142
-\\
-\hline
- & Neu & Hap & 0.9535 & 0.9545 & 0.9548
-\\
-\hline
-\multicolumn{2}{|l|}{Sad} & Exc & 0.0564 & 0.6603 & 0.6973
-\\
-\hline
-Sad & Neu &  & 0.7915 & 0.8952 & 0.8977
-\\
-\hline
- & Neu & Exc & 0.887 & 0.9088 & 0.9092
-\\
-\hline
-\multicolumn{6}{|c|}{\textbf{Positively Correlated Emotions}}
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Fru & 0.6901 & 0.8735 & 0.8798
-\\
-\hline
-\multicolumn{2}{|l|}{Hap} & Exc & 0.6097 & 0.8481 & 0.8736
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Sad & 0.8562 & 0.996 & 0.9858
-\\
-\hline
-\multicolumn{2}{|l|}{Fru} & Sad & 0.8177 & 0.9947 & 0.9674
+Happiness-Excitement & 0.0457 & 0.5914 & 0.6083
 \\
 \hline
 \end{tabular}
-\caption{Coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The emotion categories are denoted as \textit{Neu} for Neutral, \textit{Ang} for Anger, \textit{Fru} for Frustration, \textit{Hap} for Happiness, \textit{Exc} for Excitement, and \textit{Sad} for Sadness}
+\caption{Coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to the seven symmetric paths of emotion transitions into the activation-evaluation space.}
 \label{table_models}
-\end{table*}
+\end{table}
 
-Table~\ref{table_models} shows a comparison among the coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to each of the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The table is divided into three sections: the top one shows transitions from neutral to each of the five emotions, i.e., between neutral and anger, neutral and frustration, neutral and happiness, neutral and excitement, and neutral and sadness. For the paths from neutral to any of the five emotions, there is no significant difference among the $R^{2}$ values of linear, quadratic and cubic regression $(p>0.05)$, which implies that a linear model may be used to fit these paths.
+Table~\ref{table_models} shows a comparison among the coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to each of the seven symmetric paths (i.e., between neutral and happiness, neutral and excitement, neutral and anger, neutral and frustration, neutral and sadness, anger and frustration, and happiness and excitement). For the paths from neutral to any of the five emotions, there is no significant difference between the $(R^{2})$ values of linear, quadratic and cubic regression, which implies that a linear model may be used to fit these paths. For the path between neighbouring emotions such as anger to frustration as well as happiness to excitement, the quadratic regression is significantly better than the linear regression. Moreover, there is no significant difference between quadratic and cubic regressions, which implies that quadratic model may be used to fit the trajectories between the neighbouring emotions onto the activation-evaluation space.
 
-The middle section of Table~\ref{table_models} shows all paths of transitions among negatively correlated emotions, i.e., between anger and happiness, anger and excitement, frustration and happiness, frustration and excitement, sadness and happiness, and sadness and excitement. The $R^{2}$ values of linear, quadratic and cubic regression between two negatively correlated emotions show that one linear model does not fit well to these paths, while the quadratic and cubic models fit relatively better than one linear model. However, it is clear that the two linear models fit significantly better than the one linear, one quadratic, or one cubic model separately. The table shows the $R^{2}$ values of both paths of transition between two negatively correlated emotions, e.g., one directly from anger to happiness and the other from anger to neutral and then from neutral to happiness. This suggests that the negatively correlated emotions tends to pass through the neutral state while transitioning from one state to another.
 
-The last section of Table~\ref{table_models} shows all transitions among positively correlated emotions, i.e., between anger and frustration, happiness and excitement, anger and sadness, and frustration and sadness. For the path between these neighbouring emotions, the quadratic regression is better than the linear regression. Moreover, there is no significant difference between quadratic and cubic regressions, which implies that the quadratic model may be used to fit the trajectories between the two neighbouring emotions into the activation-evaluation space. This suggests that the positively correlated emotions can move from one state to another with a slight change in intensity and angle simultaneously.
 
-In the activation-evaluation space, the travel along the emotion flows/trajectories is a matter of intensity change and the angle change. As already discussed, the emotion trajectories follow `common' paths, which in turn suggests that there exists some relationship between the intensity change and angle change through time. In order to analyse this relationship, we plot the polar coordinates ($\dot{r}$: changing intensity, $\dot{\theta}$: changing emotion) of continuous points in the space during emotion transitions. Fig.~\ref{fig_controlchart} consists of two subplots showing $r$ and $\theta$ respectively. In these plots, the three horizontal lines represent the mean $(\mu)$ and mean $\pm$ 1 standard deviation $\sigma$. The third and fourth subplots show change versus no-change using a binary plot by applying the following rules to the time derivatives $(\dot{r_{t}},\dot{\theta_{t}})$ of $(r,\theta)$ respectively (where the $t$ index represents the $t^{th}$ element of the time series):
+
+In the activation-evaluation space, the travel along the emotion flows/trajectories is a matter of intensity change and the angle change. As already discussed, the emotion trajectories follow `common' paths, which in turn suggests that there exists some relationship between the intensity change and angle change through time. In order to analyse this relationship, we plot the polar coordinates ($\dot{r}$: changing intensity, $\dot{\theta}$: changing emotion) of continuous points in the space during emotion transitions. Fig.~\ref{fig_controlchart} consists of four subplots showing $r$ and $\theta$ respectively. In these plots, the three horizontal lines represent the mean $(\mu)$ and mean $\pm$ 1 standard deviation $\sigma$. The third and fourth subplots show change versus no-change using a binary plot by applying the following rules to the time derivatives $(\dot{r_{t}},\dot{\theta_{t}})$ of $(r,\theta)$ respectively (where the $t$ index represents the $t^{th}$ element of the time series):
 
 \begin{center}
 $f(\dot{\theta_{t}}) = \left\{ \begin{array}{ll}
@@ -1023,7 +806,7 @@ Fig.~\ref{fig_controlchart} shows that there is a relationship between angle cha
 \begin{center}
 {
 \centering
-\includegraphics[width=1\textwidth]{figures/Ch7/6750_6950_change_1.png} (a)
+\includegraphics[width=1\textwidth]{figures/Ch7/6750_6950_change_1.png}
 }
 \end{center}
 \caption{Ses01F$\_$impro01, continuous frames during emotion transition from anger to happiness. The temporal relationship between intensity change and angle change can be seen in the frames from 6750 to 6950. For explanation, see the text.}

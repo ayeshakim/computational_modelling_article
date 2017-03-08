@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.5.11)  8 MAR 2017 13:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.5.11)  8 MAR 2017 19:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -296,23 +296,7 @@ Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 \epsfxsize=\dimen138
 \epsfysize=\dimen139
 )
-(./draft_computational_modelling_paper.aux
-
-LaTeX Warning: Label `fig_without_norm_depen_vs_indepen' multiply defined.
-
-
-LaTeX Warning: Label `fig_without_norm_depen_vs_indepen' multiply defined.
-
-
-LaTeX Warning: Label `fig_without_norm_depen_vs_indepen' multiply defined.
-
-
-LaTeX Warning: Label `fig_with_norm_depen_vs_indepen' multiply defined.
-
-
-LaTeX Warning: Label `fig_with_norm_depen_vs_indepen' multiply defined.
-
-)
+(./draft_computational_modelling_paper.aux)
 \openout1 = `draft_computational_modelling_paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -327,7 +311,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
- ABD: EverySelectfont initializing macros
+
+ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 37.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -711,531 +696,391 @@ LaTeX Warning: Citation `mardia1972statistics' on page 9 undefined on input lin
 e 432.
 
 [9]
-
-LaTeX Warning: Citation `Whissell89' on page 10 undefined on input line 440.
-
-<figures/Ch6/emotion_space_model_4.png, id=55, 503.63156pt x 490.08093pt>
-File: figures/Ch6/emotion_space_model_4.png Graphic file (type png)
-
-<use figures/Ch6/emotion_space_model_4.png>
-Package pdftex.def Info: figures/Ch6/emotion_space_model_4.png used on input li
-ne 446.
-(pdftex.def)             Requested size: 226.6321pt x 220.53438pt.
-
-
-LaTeX Warning: Citation `jammalamadaka2001topics' on page 10 undefined on input
- line 454.
-
-
-<figures/Ch6/joint_probability_density_function_curves.png, id=56, 814.54312pt 
-x 485.56406pt>
-File: figures/Ch6/joint_probability_density_function_curves.png Graphic file (t
-ype png)
- <use figures/Ch6/joint_probability_density_function_curves.png>
-Package pdftex.def Info: figures/Ch6/joint_probability_density_function_curves.
-png used on input line 493.
-(pdftex.def)             Requested size: 246.0pt x 146.64093pt.
-
-<figures/Ch6/218_angry_von_mises_curve.png, id=57, 814.54312pt x 484.81125pt>
-File: figures/Ch6/218_angry_von_mises_curve.png Graphic file (type png)
-
-<use figures/Ch6/218_angry_von_mises_curve.png>
-Package pdftex.def Info: figures/Ch6/218_angry_von_mises_curve.png used on inpu
-t line 499.
-(pdftex.def)             Requested size: 246.0pt x 146.41357pt.
-
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 493--500
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 452--452
+[]|\OT1/ppl/m/n/8 Dependent
  []
 
-[10 <./figures/Ch6/emotion_space_model_4.png (PNG copy)>]
-<figures/Ch6/comparison_dir_updated_2.png, id=61, 615.0478pt x 325.96782pt>
+
+Overfull \hbox (2.67236pt too wide) in paragraph at lines 454--454
+[]|\OT1/ppl/m/n/8 Independent
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 458--458
+[]|\OT1/ppl/m/n/8 Dependent
+ []
+
+
+Overfull \hbox (2.67236pt too wide) in paragraph at lines 460--460
+[]|\OT1/ppl/m/n/8 Independent
+ []
+
+
+LaTeX Warning: Citation `Whissell89' on page 10 undefined on input line 468.
+
+
+LaTeX Warning: Citation `ayeshavonmises' on page 10 undefined on input line 472
+.
+
+<figures/Ch6/comparison_dir_updated_2.png, id=55, 615.0478pt x 325.96782pt>
 File: figures/Ch6/comparison_dir_updated_2.png Graphic file (type png)
 
 <use figures/Ch6/comparison_dir_updated_2.png>
 Package pdftex.def Info: figures/Ch6/comparison_dir_updated_2.png used on input
- line 513.
+ line 480.
 (pdftex.def)             Requested size: 246.0pt x 130.37984pt.
 
-<figures/Ch6/comparison_int_updated_2.png, id=62, 615.0478pt x 325.96782pt>
+<figures/Ch6/comparison_int_updated_2.png, id=56, 615.0478pt x 325.96782pt>
 File: figures/Ch6/comparison_int_updated_2.png Graphic file (type png)
 
 <use figures/Ch6/comparison_int_updated_2.png>
 Package pdftex.def Info: figures/Ch6/comparison_int_updated_2.png used on input
- line 518.
+ line 485.
 (pdftex.def)             Requested size: 246.0pt x 130.37984pt.
 
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 513--519
+Overfull \hbox (14.00024pt too wide) in paragraph at lines 480--486
  [][] 
  []
 
 
-LaTeX Warning: Citation `watson1982circular' on page 11 undefined on input line
- 524.
+LaTeX Warning: Citation `watson1982circular' on page 10 undefined on input line
+ 491.
 
 
-LaTeX Warning: Citation `mardia1972statistics' on page 11 undefined on input li
-ne 524.
+LaTeX Warning: Citation `mardia1972statistics' on page 10 undefined on input li
+ne 491.
 
 
-LaTeX Warning: Citation `kuiper1960tests' on page 11 undefined on input line 53
-8.
+LaTeX Warning: Citation `kuiper1960tests' on page 10 undefined on input line 50
+5.
 
 
-LaTeX Warning: Citation `mardia1972statistics' on page 11 undefined on input li
-ne 538.
+LaTeX Warning: Citation `mardia1972statistics' on page 10 undefined on input li
+ne 505.
 
 
-<figures/Ch6/separate_cdfs/cdf_with_ang_up1.png, id=63, 796.47563pt x 507.39563
+<figures/Ch6/separate_cdfs/cdf_with_ang_up1.png, id=57, 796.47563pt x 507.39563
 pt>
 File: figures/Ch6/separate_cdfs/cdf_with_ang_up1.png Graphic file (type png)
  <use figures/Ch6/separate_cdfs/cdf_with_ang_up1.png>
 Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_ang_up1.png used on
- input line 548.
+ input line 515.
 (pdftex.def)             Requested size: 147.6015pt x 94.0293pt.
 
-<figures/Ch6/separate_cdfs/cdf_with_fru_up1.png, id=64, 805.50937pt x 507.39563
+<figures/Ch6/separate_cdfs/cdf_with_fru_up1.png, id=58, 805.50937pt x 507.39563
 pt>
 File: figures/Ch6/separate_cdfs/cdf_with_fru_up1.png Graphic file (type png)
  <use figures/Ch6/separate_cdfs/cdf_with_fru_up1.png>
 Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_fru_up1.png used on
- input line 553.
+ input line 520.
 (pdftex.def)             Requested size: 147.6015pt x 92.96861pt.
 
-<figures/Ch6/separate_cdfs/cdf_with_hap_up1.png, id=65, 805.50937pt x 507.39563
-pt>
-File: figures/Ch6/separate_cdfs/cdf_with_hap_up1.png Graphic file (type png)
- <use figures/Ch6/separate_cdfs/cdf_with_hap_up1.png>
-Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_hap_up1.png used on
- input line 559.
-(pdftex.def)             Requested size: 147.6015pt x 92.96861pt.
-
-<figures/Ch6/separate_cdfs/cdf_with_exc_up1.png, id=66, 805.50937pt x 507.39563
-pt>
-File: figures/Ch6/separate_cdfs/cdf_with_exc_up1.png Graphic file (type png)
- <use figures/Ch6/separate_cdfs/cdf_with_exc_up1.png>
-Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_exc_up1.png used on
- input line 564.
-(pdftex.def)             Requested size: 147.6015pt x 92.96861pt.
-
-<figures/Ch6/separate_cdfs/cdf_with_sad_up1.png, id=67, 805.50937pt x 507.39563
+<figures/Ch6/separate_cdfs/cdf_with_sad_up1.png, id=59, 805.50937pt x 507.39563
 pt>
 File: figures/Ch6/separate_cdfs/cdf_with_sad_up1.png Graphic file (type png)
  <use figures/Ch6/separate_cdfs/cdf_with_sad_up1.png>
 Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_sad_up1.png used on
- input line 570.
+ input line 525.
 (pdftex.def)             Requested size: 147.6015pt x 92.96861pt.
 
-Underfull \hbox (badness 1442) in paragraph at lines 576--577
-\OT1/ppl/m/n/10 evaluation space. The colour vari-a-tion rep-re-sents
- []
+<figures/Ch6/separate_cdfs/cdf_with_hap_up1.png, id=60, 805.50937pt x 507.39563
+pt>
+File: figures/Ch6/separate_cdfs/cdf_with_hap_up1.png Graphic file (type png)
+ <use figures/Ch6/separate_cdfs/cdf_with_hap_up1.png>
+Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_hap_up1.png used on
+ input line 531.
+(pdftex.def)             Requested size: 147.6015pt x 92.96861pt.
 
-<figures/Ch6/cont_emotion_transitions.png, id=68, 587.19376pt x 444.15938pt>
-File: figures/Ch6/cont_emotion_transitions.png Graphic file (type png)
-
-<use figures/Ch6/cont_emotion_transitions.png>
-Package pdftex.def Info: figures/Ch6/cont_emotion_transitions.png used on input
- line 580.
-(pdftex.def)             Requested size: 234.87334pt x 177.6606pt.
+<figures/Ch6/separate_cdfs/cdf_with_exc_up1.png, id=61, 805.50937pt x 507.39563
+pt>
+File: figures/Ch6/separate_cdfs/cdf_with_exc_up1.png Graphic file (type png)
+ <use figures/Ch6/separate_cdfs/cdf_with_exc_up1.png>
+Package pdftex.def Info: figures/Ch6/separate_cdfs/cdf_with_exc_up1.png used on
+ input line 536.
+(pdftex.def)             Requested size: 147.6015pt x 92.96861pt.
 
 <figures/new_results/without_normalisation/Ses01F_impro01_actor1_full_map_not_0
-_1.jpg, id=69, 562.1pt x 421.575pt>
+_1.jpg, id=62, 562.1pt x 421.575pt>
 File: figures/new_results/without_normalisation/Ses01F_impro01_actor1_full_map_
 not_0_1.jpg Graphic file (type jpg)
 
 <use figures/new_results/without_normalisation/Ses01F_impro01_actor1_full_map_n
 ot_0_1.jpg>
 Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_actor1_full_map_not_0_1.jpg used on input line 613.
+01_actor1_full_map_not_0_1.jpg used on input line 550.
 (pdftex.def)             Requested size: 246.0pt x 184.49649pt.
 
 <figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_full_map_no
-t_0_1.jpg, id=70, 562.1pt x 421.575pt>
+t_0_1.jpg, id=63, 562.1pt x 421.575pt>
 File: figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_full_m
 ap_not_0_1.jpg Graphic file (type jpg)
 
 <use figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_full_ma
 p_not_0_1.jpg>
 Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_actor2_10_full_map_not_0_1.jpg used on input line 619.
+01_actor2_10_full_map_not_0_1.jpg used on input line 556.
 (pdftex.def)             Requested size: 246.0pt x 184.49649pt.
 
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 613--620
+Overfull \hbox (14.00024pt too wide) in paragraph at lines 550--557
  [][] 
- []
-
-
-<figures/new_results/without_normalisation/Ses01F_impro01_actor1_neu_max.jpg, i
-d=71, 894.34125pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_actor1_neu_max.j
-pg Graphic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_actor1_neu_max.jp
-g>
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_actor1_neu_max.jpg used on input line 631.
-(pdftex.def)             Requested size: 246.0pt x 115.956pt.
-
-<figures/new_results/without_normalisation/Ses01F_impro01_actor1.jpg, id=72, 12
-29.59375pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_actor1.jpg Graph
-ic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_actor1.jpg>
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_actor1.jpg used on input line 637.
-(pdftex.def)             Requested size: 246.0pt x 84.33923pt.
-
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 631--638
- [][] 
- []
-
-
-<figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_neu_max.jpg
-, id=73, 1282.7925pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_neu_ma
-x.jpg Graphic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_actor2_10_neu_max
-.jpg>
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_actor2_10_neu_max.jpg used on input line 649.
-(pdftex.def)             Requested size: 246.0pt x 80.83983pt.
-
-<figures/new_results/without_normalisation/Ses01F_impro01_actor2_10.jpg, id=74,
- 562.1pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_actor2_10.jpg Gr
-aphic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_actor2_10.jpg>
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_actor2_10.jpg used on input line 655.
-(pdftex.def)             Requested size: 246.0pt x 184.49649pt.
-
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 649--656
- [][] 
- []
-
-
-<figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg, id=75,
- 562.1pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg Gr
-aphic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg>
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_gamma_emo.jpg used on input line 667.
-(pdftex.def)             Requested size: 162.3609pt x 121.77116pt.
-
-<figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_excluding_n
-eu.jpg, id=76, 562.1pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_exclud
-ing_neu.jpg Graphic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_excludi
-ng_neu.jpg>
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_gamma_emo_excluding_neu.jpg used on input line 673.
-(pdftex.def)             Requested size: 162.3609pt x 121.77116pt.
-
-<figures/new_results/without_normalisation/Ses01F_impro01_gamma_neutral.jpg, id
-=77, 562.1pt x 421.575pt>
-File: figures/new_results/without_normalisation/Ses01F_impro01_gamma_neutral.jp
-g Graphic file (type jpg)
-
-<use figures/new_results/without_normalisation/Ses01F_impro01_gamma_neutral.jpg
->
-Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
-01_gamma_neutral.jpg used on input line 679.
-(pdftex.def)             Requested size: 162.3609pt x 121.77116pt.
-
-Overfull \hbox (16.08307pt too wide) in paragraph at lines 667--680
- [][][] 
  []
 
 
 <figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_full_map_not_
-0_1_nomeans.jpg, id=78, 562.1pt x 421.575pt>
+0_1_nomeans.jpg, id=64, 562.1pt x 421.575pt>
 File: figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_full_map
 _not_0_1_nomeans.jpg Graphic file (type jpg)
 
 <use figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_full_map_
 not_0_1_nomeans.jpg>
 Package pdftex.def Info: figures/new_results/with_ref_normalisation/Ses01F_impr
-o01_actor1_full_map_not_0_1_nomeans.jpg used on input line 693.
+o01_actor1_full_map_not_0_1_nomeans.jpg used on input line 563.
 (pdftex.def)             Requested size: 246.0pt x 184.49649pt.
 
 <figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_full_map_n
-ot_0_1_nomeans.jpg, id=79, 562.1pt x 421.575pt>
+ot_0_1_nomeans.jpg, id=65, 562.1pt x 421.575pt>
 File: figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_full_
 map_not_0_1_nomeans.jpg Graphic file (type jpg)
 
 <use figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_full_m
 ap_not_0_1_nomeans.jpg>
 Package pdftex.def Info: figures/new_results/with_ref_normalisation/Ses01F_impr
-o01_actor2_10_full_map_not_0_1_nomeans.jpg used on input line 699.
+o01_actor2_10_full_map_not_0_1_nomeans.jpg used on input line 568.
 (pdftex.def)             Requested size: 246.0pt x 184.49649pt.
 
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 693--700
- [][] 
+Overfull \hbox (14.00024pt too wide) in paragraph at lines 563--569
+ [][][] 
+ []
+
+[10] [11 <./figures/Ch6/comparison_dir_updated_2.png (PNG copy)> <./figures/Ch6
+/comparison_int_updated_2.png (PNG copy)> <./figures/Ch6/separate_cdfs/cdf_with
+_ang_up1.png (PNG copy)> <./figures/Ch6/separate_cdfs/cdf_with_fru_up1.png (PNG
+ copy)> <./figures/Ch6/separate_cdfs/cdf_with_sad_up1.png (PNG copy)> <./figure
+s/Ch6/separate_cdfs/cdf_with_hap_up1.png (PNG copy)> <./figures/Ch6/separate_cd
+fs/cdf_with_exc_up1.png (PNG copy)>]
+<figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg, id=72,
+ 562.1pt x 421.575pt>
+File: figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg Gr
+aphic file (type jpg)
+
+<use figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg>
+Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
+01_gamma_emo.jpg used on input line 600.
+(pdftex.def)             Requested size: 162.3609pt x 121.77116pt.
+
+<figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_excluding_n
+eu.jpg, id=73, 562.1pt x 421.575pt>
+File: figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_exclud
+ing_neu.jpg Graphic file (type jpg)
+
+<use figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_excludi
+ng_neu.jpg>
+Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
+01_gamma_emo_excluding_neu.jpg used on input line 606.
+(pdftex.def)             Requested size: 162.3609pt x 121.77116pt.
+
+<figures/new_results/without_normalisation/Ses01F_impro01_gamma_neutral.jpg, id
+=74, 562.1pt x 421.575pt>
+File: figures/new_results/without_normalisation/Ses01F_impro01_gamma_neutral.jp
+g Graphic file (type jpg)
+
+<use figures/new_results/without_normalisation/Ses01F_impro01_gamma_neutral.jpg
+>
+Package pdftex.def Info: figures/new_results/without_normalisation/Ses01F_impro
+01_gamma_neutral.jpg used on input line 612.
+(pdftex.def)             Requested size: 162.3609pt x 121.77116pt.
+
+Overfull \hbox (16.08307pt too wide) in paragraph at lines 600--613
+ [][][] 
  []
 
 
-<figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_neu_max.jpg, 
-id=80, 1269.74374pt x 421.575pt>
-File: figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_neu_max.
-jpg Graphic file (type jpg)
-
-<use figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_neu_max.j
-pg>
-Package pdftex.def Info: figures/new_results/with_ref_normalisation/Ses01F_impr
-o01_actor1_neu_max.jpg used on input line 711.
-(pdftex.def)             Requested size: 246.0pt x 81.67609pt.
-
-<figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1.jpg, id=81, 5
-62.1pt x 421.575pt>
-File: figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1.jpg Grap
-hic file (type jpg)
-
-<use figures/new_results/with_ref_normalisation/Ses01F_impro01_actor1.jpg>
-Package pdftex.def Info: figures/new_results/with_ref_normalisation/Ses01F_impr
-o01_actor1.jpg used on input line 717.
-(pdftex.def)             Requested size: 246.0pt x 184.49649pt.
-
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 711--718
- [][] 
- []
+LaTeX Warning: Citation `ritchie2009fading' on page 12 undefined on input line 
+624.
 
 
-<figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_neu_max.jp
-g, id=82, 1276.77pt x 421.575pt>
-File: figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_neu_m
-ax.jpg Graphic file (type jpg)
-
-<use figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_neu_ma
-x.jpg>
-Package pdftex.def Info: figures/new_results/with_ref_normalisation/Ses01F_impr
-o01_actor2_10_neu_max.jpg used on input line 729.
-(pdftex.def)             Requested size: 246.0pt x 81.2258pt.
-
-<figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10.jpg, id=83
-, 562.1pt x 421.575pt>
-File: figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10.jpg G
-raphic file (type jpg)
-
-<use figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10.jpg>
-Package pdftex.def Info: figures/new_results/with_ref_normalisation/Ses01F_impr
-o01_actor2_10.jpg used on input line 735.
-(pdftex.def)             Requested size: 246.0pt x 184.49649pt.
-
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 729--736
- [][] 
- []
+LaTeX Warning: Citation `scherer2000psychological' on page 12 undefined on inpu
+t line 624.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./figures/Ch6/joint_probability_density_function_curves.png (PNG copy)> <
-./figures/Ch6/218_angry_von_mises_curve.png (PNG copy)>] [12 <./figures/Ch6/com
-parison_dir_updated_2.png (PNG copy)> <./figures/Ch6/comparison_int_updated_2.p
-ng (PNG copy)> <./figures/Ch6/separate_cdfs/cdf_with_ang_up1.png (PNG copy)> <.
-/figures/Ch6/separate_cdfs/cdf_with_fru_up1.png (PNG copy)> <./figures/Ch6/sepa
-rate_cdfs/cdf_with_hap_up1.png (PNG copy)> <./figures/Ch6/separate_cdfs/cdf_wit
-h_exc_up1.png (PNG copy)> <./figures/Ch6/separate_cdfs/cdf_with_sad_up1.png (PN
-G copy)>]
-[13 <./figures/new_results/without_normalisation/Ses01F_impro01_actor1_full_map
-_not_0_1.jpg> <./figures/new_results/without_normalisation/Ses01F_impro01_actor
-2_10_full_map_not_0_1.jpg> <./figures/new_results/without_normalisation/Ses01F_
-impro01_actor1_neu_max.jpg> <./figures/new_results/without_normalisation/Ses01F
-_impro01_actor1.jpg> <./figures/new_results/without_normalisation/Ses01F_impro0
-1_actor2_10_neu_max.jpg> <./figures/new_results/without_normalisation/Ses01F_im
-pro01_actor2_10.jpg>] [14 <./figures/new_results/without_normalisation/Ses01F_i
-mpro01_gamma_emo.jpg> <./figures/new_results/without_normalisation/Ses01F_impro
-01_gamma_emo_excluding_neu.jpg> <./figures/new_results/without_normalisation/Se
-s01F_impro01_gamma_neutral.jpg> <./figures/new_results/with_ref_normalisation/S
-es01F_impro01_actor1_full_map_not_0_1_nomeans.jpg> <./figures/new_results/with_
-ref_normalisation/Ses01F_impro01_actor2_10_full_map_not_0_1_nomeans.jpg> <./fig
-ures/new_results/with_ref_normalisation/Ses01F_impro01_actor1_neu_max.jpg> <./f
-igures/new_results/with_ref_normalisation/Ses01F_impro01_actor1.jpg>]
-
-LaTeX Warning: Citation `ritchie2009fading' on page 15 undefined on input line 
-769.
-
-
-LaTeX Warning: Citation `scherer2000psychological' on page 15 undefined on inpu
-t line 769.
-
-
-Underfull \hbox (badness 1484) in paragraph at lines 769--770
+Underfull \hbox (badness 1484) in paragraph at lines 624--625
 \OT1/ppl/m/n/10 gres-sion, ex-ter-nal stim-uli, and the way the face
  []
 
 
-LaTeX Warning: Citation `terzopoulos1990physically' on page 15 undefined on inp
-ut line 771.
+Underfull \vbox (badness 2142) has occurred while \output is active []
 
-[15 <./figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10_neu_
-max.jpg> <./figures/new_results/with_ref_normalisation/Ses01F_impro01_actor2_10
-.jpg> <./figures/Ch6/cont_emotion_transitions.png (PNG copy)>]
-<figures/Ch7/con_emo_traj_color_up.png, id=100, 714.41907pt x 492.33937pt>
+ [12 <./figures/new_results/without_normalisation/Ses01F_impro01_actor1_full_ma
+p_not_0_1.jpg> <./figures/new_results/without_normalisation/Ses01F_impro01_acto
+r2_10_full_map_not_0_1.jpg> <./figures/new_results/with_ref_normalisation/Ses01
+F_impro01_actor1_full_map_not_0_1_nomeans.jpg> <./figures/new_results/with_ref_
+normalisation/Ses01F_impro01_actor2_10_full_map_not_0_1_nomeans.jpg>]
+
+LaTeX Warning: Citation `terzopoulos1990physically' on page 13 undefined on inp
+ut line 626.
+
+<figures/Ch7/con_emo_traj_color_up.png, id=78, 714.41907pt x 492.33937pt>
 File: figures/Ch7/con_emo_traj_color_up.png Graphic file (type png)
 
 <use figures/Ch7/con_emo_traj_color_up.png>
 Package pdftex.def Info: figures/Ch7/con_emo_traj_color_up.png used on input li
-ne 779.
+ne 634.
 (pdftex.def)             Requested size: 246.0pt x 169.5267pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 779--780
+Overfull \hbox (6.0pt too wide) in paragraph at lines 634--635
  [][] 
  []
 
 
-LaTeX Warning: Citation `qian2004hurst' on page 16 undefined on input line 807.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <./figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo.jpg>
+ <./figures/new_results/without_normalisation/Ses01F_impro01_gamma_emo_excludin
+g_neu.jpg> <./figures/new_results/without_normalisation/Ses01F_impro01_gamma_ne
+utral.jpg> <./figures/Ch7/con_emo_traj_color_up.png>]
+
+LaTeX Warning: Citation `qian2004hurst' on page 14 undefined on input line 662.
 
 
 
-LaTeX Warning: Citation `ayeshahakimanalysispaper' on page 16 undefined on inpu
-t line 813.
+LaTeX Warning: Citation `ayeshahakimanalysispaper' on page 14 undefined on inpu
+t line 668.
 
 
-LaTeX Warning: Citation `ayeshahakimanalysispaper' on page 16 undefined on inpu
-t line 815.
+LaTeX Warning: Citation `ayeshahakimanalysispaper' on page 14 undefined on inpu
+t line 670.
 
-[16 <./figures/Ch7/con_emo_traj_color_up.png>]
-<figures/Ch7/hurst_slope.png, id=107, 803.25093pt x 487.8225pt>
+<figures/Ch7/hurst_slope.png, id=85, 803.25093pt x 487.8225pt>
 File: figures/Ch7/hurst_slope.png Graphic file (type png)
 
 <use figures/Ch7/hurst_slope.png>
-Package pdftex.def Info: figures/Ch7/hurst_slope.png used on input line 856.
+Package pdftex.def Info: figures/Ch7/hurst_slope.png used on input line 707.
 (pdftex.def)             Requested size: 246.0pt x 149.39973pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 856--857
+Overfull \hbox (6.0pt too wide) in paragraph at lines 707--708
  [][] 
  []
 
-<figures/Ch7/false_pos_color.png, id=108, 563.10374pt x 423.83344pt>
+[14] <figures/Ch7/false_pos_color.png, id=90, 563.10374pt x 423.83344pt>
 File: figures/Ch7/false_pos_color.png Graphic file (type png)
 
 <use figures/Ch7/false_pos_color.png>
-Package pdftex.def Info: figures/Ch7/false_pos_color.png used on input line 865
+Package pdftex.def Info: figures/Ch7/false_pos_color.png used on input line 716
 .
 (pdftex.def)             Requested size: 246.0pt x 185.15504pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 865--866
+Overfull \hbox (6.0pt too wide) in paragraph at lines 716--717
  [][] 
  []
 
 
-LaTeX Warning: Citation `blumberg1991patterns' on page 17 undefined on input li
-ne 873.
+LaTeX Warning: Citation `blumberg1991patterns' on page 15 undefined on input li
+ne 724.
 
-[17 <./figures/Ch7/hurst_slope.png (PNG copy)> <./figures/Ch7/false_pos_color.p
-ng (PNG copy)>]
-<figures/Ch7/exc_fru_color.png, id=112, 569.12625pt x 423.08063pt>
+<figures/Ch7/exc_fru_color.png, id=91, 569.12625pt x 423.08063pt>
 File: figures/Ch7/exc_fru_color.png Graphic file (type png)
 
 <use figures/Ch7/exc_fru_color.png>
-Package pdftex.def Info: figures/Ch7/exc_fru_color.png used on input line 885.
+Package pdftex.def Info: figures/Ch7/exc_fru_color.png used on input line 736.
 (pdftex.def)             Requested size: 246.0pt x 182.87656pt.
 
-<figures/Ch7/ang_fru_color.png, id=113, 568.37344pt x 423.08063pt>
+<figures/Ch7/ang_fru_color.png, id=92, 568.37344pt x 423.08063pt>
 File: figures/Ch7/ang_fru_color.png Graphic file (type png)
 
 <use figures/Ch7/ang_fru_color.png>
-Package pdftex.def Info: figures/Ch7/ang_fru_color.png used on input line 891.
+Package pdftex.def Info: figures/Ch7/ang_fru_color.png used on input line 742.
 (pdftex.def)             Requested size: 246.0pt x 183.11542pt.
 
-Overfull \hbox (14.00024pt too wide) in paragraph at lines 885--892
+Overfull \hbox (14.00024pt too wide) in paragraph at lines 736--743
  [][] 
  []
 
 
-LaTeX Warning: Citation `terzopoulos1990physically' on page 18 undefined on inp
-ut line 897.
+LaTeX Warning: Citation `terzopoulos1990physically' on page 15 undefined on inp
+ut line 748.
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 1005--1006
-\OT1/ppl/m/n/10 anger and frus-tra-tion, hap-pi-ness and ex-cite-ment,
+Overfull \hbox (2.28854pt too wide) in paragraph at lines 754--754
+ []|\OT1/ppl/b/n/8 Quadratic 
  []
 
-<figures/Ch7/6750_6950_change_1.png, id=114, 963.6pt x 532.99126pt>
+[15 <./figures/Ch7/hurst_slope.png (PNG copy)> <./figures/Ch7/false_pos_color.p
+ng (PNG copy)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<figures/Ch7/6750_6950_change_1.png, id=98, 963.6pt x 532.99126pt>
 File: figures/Ch7/6750_6950_change_1.png Graphic file (type png)
 
 <use figures/Ch7/6750_6950_change_1.png>
 Package pdftex.def Info: figures/Ch7/6750_6950_change_1.png used on input line 
-1026.
+807.
 (pdftex.def)             Requested size: 492.0pt x 272.131pt.
- [18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19 <./figures/Ch7/exc_fru_color.png (PNG copy)> <./figures/Ch7/ang_fru_color.
+ [16 <./figures/Ch7/exc_fru_color.png (PNG copy)> <./figures/Ch7/ang_fru_color.
 png (PNG copy)>]
 
-LaTeX Warning: Citation `blumberg1991patterns' on page 20 undefined on input li
-ne 1044.
+LaTeX Warning: Citation `blumberg1991patterns' on page 17 undefined on input li
+ne 825.
 
 
-Underfull \vbox (badness 2277) has occurred while \output is active []
+Underfull \vbox (badness 6300) has occurred while \output is active []
 
- [20 <./figures/Ch7/6750_6950_change_1.png (PNG copy)>]
-(./draft_computational_modelling_paper.bbl [21])
-** ATTENTION: \biography is deprecated (line 1080). Use \IEEEbiography instead.
 
-<AHM.jpg, id=130, 253.94875pt x 387.4475pt>
+Underfull \vbox (badness 6300) has occurred while \output is active []
+
+ [17 <./figures/Ch7/6750_6950_change_1.png (PNG copy)>]
+(./draft_computational_modelling_paper.bbl [18])
+** ATTENTION: \biography is deprecated (line 861). Use \IEEEbiography instead.
+<AHM.jpg, id=108, 253.94875pt x 387.4475pt>
 File: AHM.jpg Graphic file (type jpg)
  <use AHM.jpg>
-Package pdftex.def Info: AHM.jpg used on input line 1080.
+Package pdftex.def Info: AHM.jpg used on input line 861.
 (pdftex.def)             Requested size: 59.20909pt x 90.33482pt.
 File: AHM.jpg Graphic file (type jpg)
  <use AHM.jpg>
-Package pdftex.def Info: AHM.jpg used on input line 1080.
+Package pdftex.def Info: AHM.jpg used on input line 861.
 (pdftex.def)             Requested size: 59.20909pt x 90.33482pt.
 
-Underfull \hbox (badness 7595) in paragraph at lines 1080--1083
+Underfull \hbox (badness 7595) in paragraph at lines 861--864
 []\OT1/phv/b/n/8 Ayesha Hakim \OT1/phv/m/n/8 Ayesha Hakim has a
  []
 
-** ATTENTION: \biography is deprecated (line 1085). Use \IEEEbiography instead.
-
-<SRM.jpg, id=133, 229.85875pt x 262.9825pt>
+** ATTENTION: \biography is deprecated (line 866). Use \IEEEbiography instead.
+<SRM.jpg, id=111, 229.85875pt x 262.9825pt>
 File: SRM.jpg Graphic file (type jpg)
  <use SRM.jpg>
-Package pdftex.def Info: SRM.jpg used on input line 1085.
+Package pdftex.def Info: SRM.jpg used on input line 866.
 (pdftex.def)             Requested size: 72.26909pt x 82.68341pt.
 File: SRM.jpg Graphic file (type jpg)
  <use SRM.jpg>
-Package pdftex.def Info: SRM.jpg used on input line 1085.
+Package pdftex.def Info: SRM.jpg used on input line 866.
 (pdftex.def)             Requested size: 72.26909pt x 82.68341pt.
 
-** ATTENTION: \biography is deprecated (line 1090). Use \IEEEbiography instead.
-
-<HWG.jpg, id=136, 1752.5475pt x 2327.69624pt>
+** ATTENTION: \biography is deprecated (line 871). Use \IEEEbiography instead.
+<HWG.jpg, id=114, 1752.5475pt x 2327.69624pt>
 File: HWG.jpg Graphic file (type jpg)
  <use HWG.jpg>
-Package pdftex.def Info: HWG.jpg used on input line 1090.
+Package pdftex.def Info: HWG.jpg used on input line 871.
 (pdftex.def)             Requested size: 68.0041pt x 90.32161pt.
 File: HWG.jpg Graphic file (type jpg)
  <use HWG.jpg>
-Package pdftex.def Info: HWG.jpg used on input line 1090.
+Package pdftex.def Info: HWG.jpg used on input line 871.
 (pdftex.def)             Requested size: 68.0041pt x 90.32161pt.
 
-[22 <./AHM.jpg> <./SRM.jpg> <./HWG.jpg>]
+[19 <./AHM.jpg> <./SRM.jpg> <./HWG.jpg>]
 (./draft_computational_modelling_paper.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 5218 strings out of 493315
- 87648 string characters out of 6137904
- 162022 words of memory out of 5000000
- 8523 multiletter control sequences out of 15000+600000
+ 5155 strings out of 493315
+ 83950 string characters out of 6137904
+ 152907 words of memory out of 5000000
+ 8468 multiletter control sequences out of 15000+600000
  51628 words of font info for 122 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,13n,47p,1423b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1261,11 +1106,11 @@ etic/uhvro8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palatino/u
 plb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></u
 sr/local/texlive/2013/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on draft_computational_modelling_paper.pdf (22 pages, 3315036 by
+Output written on draft_computational_modelling_paper.pdf (19 pages, 2755017 by
 tes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
+ 195 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

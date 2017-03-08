@@ -97,8 +97,8 @@
 \newlabel{sec_methodology}{{3}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset}{6}}
 \newlabel{sec_dataset}{{3.1}{6}}
-\newlabel{sec_data_preprocessing}{{3.1.0.1}{6}}
-\@writefile{toc}{\contentsline {paragraph}{\numberline {3.1.0.1}Data Preprocessing}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Data Preprocessing}{6}}
+\newlabel{sec_data_preprocessing}{{3.1.1}{6}}
 \citation{ortony1990s,ekman1999basic}
 \citation{ayeshahakimshapemodelpaper}
 \citation{ayeshahakimshapemodels}
@@ -134,103 +134,73 @@
 \@writefile{toc}{\contentsline {paragraph}{\numberline {3.3.2.1}Estimating the concentration parameter}{9}}
 \newlabel{eq:kappa}{{10}{9}}
 \citation{Whissell89}
-\citation{jammalamadaka2001topics}
+\citation{ayeshavonmises}
+\citation{watson1982circular,mardia1972statistics}
+\citation{kuiper1960tests,mardia1972statistics}
 \newlabel{sec_est_weight}{{3.3.2.2}{10}}
 \@writefile{toc}{\contentsline {paragraph}{\numberline {3.3.2.2}Estimating the weights}{10}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Results}{10}}
 \newlabel{sec_results}{{4}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The position of each basic emotion (based on the training set) in the activation-evaluation space.\relax }}{10}}
-\newlabel{fig_emotionspacemodel}{{3}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Angular values from Whissell's study and those estimated by the models.\relax }}{10}}
-\newlabel{tab:angles}{{1}{10}}
-\citation{watson1982circular,mardia1972statistics}
-\citation{kuiper1960tests,mardia1972statistics}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces (a) von Mises Probability Distributions in the mixture model with unit weight, (b) von Mises Probability Distributions characterising one frame of an utterance labelled as [angry, angry, frustrated] by three human experts.\relax }}{11}}
-\newlabel{fig_mixturemodelpdf}{{4}{11}}
+\newlabel{eq_kstatistic}{{12}{10}}
+\newlabel{eq_deviation}{{13}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Mean intensity of five emotions and neutral state estimated using dependent and independent models both with and without performing speaker-normalisation.\relax }}{11}}
+\newlabel{table_mean_emotions}{{1}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The test of fit for (a) the mean ground truth \textit  {directions} and those estimated by the mixture model (b) the mean ground truth \textit  {intensities} and those estimated by the mixture model, for each of the seven conversations in the test set. Lines mark one standard deviation.\relax }}{11}}
+\newlabel{fig_comparison}{{3}{11}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{11}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{11}}
-\newlabel{eq_kstatistic}{{13}{11}}
-\newlabel{eq_deviation}{{14}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The test of fit for (a) the mean ground truth \textit  {directions} and those estimated by the mixture model (b) the mean ground truth \textit  {intensities} and those estimated by the mixture model, for each of the seven conversations in the test set. Lines mark one standard deviation.\relax }}{12}}
-\newlabel{fig_comparison}{{5}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Illustration of the Kuiper's statistic. Blue line is model estimated CDF of (a) anger, (b) frustration, (c) happiness, (d) excitement, and (e) sadness, red line is an empirical CDF of the first conversation in the testing set, and the green line is the Kuiper's statistic.\relax }}{12}}
-\newlabel{fig_kuiper}{{6}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {cdf of anger}}}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {cdf of frustration}}}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {cdf of happiness}}}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {cdf of excitement}}}{12}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {cdf of sadness}}}{12}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Mean accuracy dependent and independent model with and without reference-based speaker normalisation.\relax }}{12}}
-\newlabel{table_accuracy}{{2}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Without normalisation, dependent versus independent model\relax }}{13}}
-\newlabel{fig_without_norm_depen_vs_indepen}{{8}{13}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition without normalisation. Dependent Model.}}}{13}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition without normalisation. Independent Model.}}}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Gammas of Dependent Model\relax }}{13}}
-\newlabel{fig_without_norm_depen_vs_indepen}{{9}{13}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Gamma neutral versus Closest Emotion. Dependent Model.}}}{13}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Gamma neutral versus Sum of other gamma emotions. Dependent Model.}}}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Gammas of Independent Model\relax }}{13}}
-\newlabel{fig_without_norm_depen_vs_indepen}{{10}{13}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Gamma neutral versus Closest Emotion. Independent Model.}}}{13}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Gamma neutral versus Sum of other gamma emotions. Independent Model.}}}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Gammas of all emotions without normalisation\relax }}{14}}
-\newlabel{fig_without_norm_depen_vs_indepen}{{11}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {All gamma emotions}}}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {All gamma emotions excluding neutral}}}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Gamma neutral}}}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces With normalisation, dependent versus independent model\relax }}{14}}
-\newlabel{fig_with_norm_depen_vs_indepen}{{12}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Dependent Model.}}}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Independent Model.}}}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Gammas of Dependent Model\relax }}{14}}
-\newlabel{fig_with_norm_depen_vs_indepen}{{13}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Gamma neutral versus Closest Emotion. Dependent Model.}}}{14}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Gamma neutral versus Sum of other gamma emotions. Dependent Model.}}}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Illustration of the Kuiper's statistic. Blue line is model estimated CDF of (a) anger, (b) frustration, (c) sadness, (d) happiness, and (e) excitement, red line is an empirical CDF of the first conversation in the testing set, and the green line is the Kuiper's statistic.\relax }}{11}}
+\newlabel{fig_kuiper}{{4}{11}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {cdf of anger}}}{11}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {cdf of frustration}}}{11}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {cdf of sadness}}}{11}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {cdf of happiness}}}{11}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {cdf of excitement}}}{11}}
 \citation{ritchie2009fading}
 \citation{scherer2000psychological}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces With and Without normalisation, dependent versus independent model\relax }}{12}}
+\newlabel{fig_depen_vs_indepen}{{5}{12}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition without normalisation. Dependent Model.}}}{12}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition without normalisation. Independent Model.}}}{12}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Dependent Model.}}}{12}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Full dialog, Ses01F$\_$impro01, continuous frames during emotion transition with normalisation. Independent Model.}}}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Analysis of Emotion Dynamics}{12}}
+\newlabel{sec_analysis}{{5}{12}}
 \citation{terzopoulos1990physically}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Gammas of Independent Model\relax }}{15}}
-\newlabel{fig_with_norm_depen_vs_indepen}{{14}{15}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Gamma neutral versus Closest Emotion. Independent Model.}}}{15}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Gamma neutral versus Sum of other gamma emotions. Independent Model.}}}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The mapping of continuous emotions during an utterance on the activation-evaluation space, along with the mean ground truth direction and intensity and those estimated by the model. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).\relax }}{15}}
-\newlabel{fig_conv_emotion_space_model}{{7}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Without Normalisation}{15}}
-\newlabel{sec_without_normalisation}{{4.1}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}With Reference-based Normalisation}{15}}
-\newlabel{sec_with_normalisation}{{4.2}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Analysis of Emotion Dynamics}{15}}
-\newlabel{sec_analysis}{{5}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Mean accuracy dependent and independent model with and without reference-based speaker normalisation.\relax }}{13}}
+\newlabel{table_accuracy}{{2}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gammas of all emotions without normalisation\relax }}{13}}
+\newlabel{fig_without_norm_depen_vs_indepen}{{6}{13}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {All gamma emotions}}}{13}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {All gamma emotions excluding neutral}}}{13}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Gamma neutral}}}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The mapping of continuous emotions during a conversation (Ses01F$\_$impro01) into the activation-evaluation space. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).\relax }}{13}}
+\newlabel{fig_con_emo_traj_color_up}{{7}{13}}
 \citation{qian2004hurst}
 \citation{ayeshahakimanalysispaper}
 \citation{ayeshahakimanalysispaper}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces The mapping of continuous emotions during a conversation (Ses01F$\_$impro01) into the activation-evaluation space. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).\relax }}{16}}
-\newlabel{fig_con_emo_traj_color_up}{{15}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Hypotheses Testing}{16}}
-\newlabel{sec_hypotheses_testing}{{5.1}{16}}
-\newlabel{para_hypothesis_1}{{5.1}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Evaluation}{14}}
+\newlabel{sec_evaluation}{{5.1}{14}}
+\newlabel{para_hypothesis_1}{{5.1}{14}}
+\newlabel{eq_size_of_change}{{14}{14}}
 \citation{blumberg1991patterns}
-\newlabel{eq_size_of_change}{{15}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces A linear regression model fitted to $R/S$ analysis for all emotion trajectories in the testing set.\relax }}{17}}
-\newlabel{fig_hurst_slope}{{16}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces The false positives appear during transition from neutral to excited. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).\relax }}{17}}
-\newlabel{fig_false_pos}{{17}{17}}
-\newlabel{para_hypothesis_2_3}{{5.1}{17}}
 \citation{terzopoulos1990physically}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{18}}
-\newlabel{sec_discussion}{{6}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Transitions between negatively correlated emotions tend to pass through the neutral state, while transitions between positively correlated emotions do not.\relax }}{19}}
-\newlabel{fig_e1_to_e2}{{18}{19}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Continuous transition between excitement and frustration, which are negatively correlated emotions}}}{19}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Continuous transition between anger and frustration, which are positively correlated emotions}}}{19}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The emotion categories are denoted as \textit  {Neu} for Neutral, \textit  {Ang} for Anger, \textit  {Fru} for Frustration, \textit  {Hap} for Happiness, \textit  {Exc} for Excitement, and \textit  {Sad} for Sadness\relax }}{19}}
-\newlabel{table_models}{{3}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces A linear regression model fitted to $R/S$ analysis for all emotion trajectories in the testing set.\relax }}{15}}
+\newlabel{fig_hurst_slope}{{8}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The false positives appear during transition from neutral to excited. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).\relax }}{15}}
+\newlabel{fig_false_pos}{{9}{15}}
+\newlabel{para_hypothesis_2_3}{{5.1}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to the seven symmetric paths of emotion transitions into the activation-evaluation space.\relax }}{15}}
+\newlabel{table_models}{{3}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Transitions between negatively correlated emotions tend to pass through the neutral state, while transitions between positively correlated emotions do not.\relax }}{16}}
+\newlabel{fig_e1_to_e2}{{10}{16}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Continuous transition between excitement and frustration, which are negatively correlated emotions}}}{16}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Continuous transition between anger and frustration, which are positively correlated emotions}}}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{16}}
+\newlabel{sec_discussion}{{6}{16}}
 \citation{blumberg1991patterns}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Ses01F$\_$impro01, continuous frames during emotion transition from anger to happiness. The temporal relationship between intensity change and angle change can be seen in the frames from 6750 to 6950. For explanation, see the text.\relax }}{20}}
-\newlabel{fig_controlchart}{{19}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Ses01F$\_$impro01, continuous frames during emotion transition from anger to happiness. The temporal relationship between intensity change and angle change can be seen in the frames from 6750 to 6950. For explanation, see the text.\relax }}{17}}
+\newlabel{fig_controlchart}{{11}{17}}
 \bibstyle{IEEEtran}
 \bibdata{bib_computational_modelling}
 \bibcite{Picard97}{1}
@@ -263,9 +233,9 @@
 \bibcite{cohn1999automated}{28}
 \bibcite{tian2001recognizing}{29}
 \bibcite{braathen2002approach}{30}
-\@writefile{toc}{\contentsline {section}{References}{21}}
 \bibcite{Mahoor09}{31}
 \bibcite{Pandzic02}{32}
+\@writefile{toc}{\contentsline {section}{References}{18}}
 \bibcite{Pantic00}{33}
 \bibcite{zhou2006facial}{34}
 \bibcite{Ioannou05}{35}
@@ -275,7 +245,7 @@
 \bibcite{ekman1999basic}{39}
 \bibcite{Mahal1936}{40}
 \bibcite{hakim2013vonmises}{41}
-\@writefile{toc}{\contentsline {section}{Biographies}{22}}
-\@writefile{toc}{\contentsline {subsection}{Ayesha Hakim}{22}}
-\@writefile{toc}{\contentsline {subsection}{Stephen Marsland}{22}}
-\@writefile{toc}{\contentsline {subsection}{Hans W. Guesgen}{22}}
+\@writefile{toc}{\contentsline {section}{Biographies}{19}}
+\@writefile{toc}{\contentsline {subsection}{Ayesha Hakim}{19}}
+\@writefile{toc}{\contentsline {subsection}{Stephen Marsland}{19}}
+\@writefile{toc}{\contentsline {subsection}{Hans W. Guesgen}{19}}

@@ -44,17 +44,17 @@
 %\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem Ayesha Hakim, Stephen Marsland, %and~Hans~W.~Guesgen are with the School of Engineering and Advanced Technology, Massey University, %New Zealand.\protect\\
 %E-mail: {a.hakim,~s.r.marsland,~h.w.guesgen}@massey.ac.nz}
 
+
 \author{Ayesha~Hakim,
-        Stephen~Marsland,~\IEEEmembership{}
-        and~Hans~W.~Guesgen~\IEEEmembership{}% <-this % stops a space
-\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem Ayesha~Hakim, Stephen~Marsland, and~Hans~W.~Guesgen are with the School of Engineering and Advanced Technology, Massey University, New Zealand. \protect\\
+        Stephen~Marsland,
+        and~Hans~W.~Guesgen% <-this % stops a space
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem Ayesha~Hakim is with the Centre for Business, Information Technology \& Enterprise, Wintec, New Zealand. \protect\\
 % note need leading \protect in front of \\ to get a newline within \thanks as
 % \\ is fragile and will error, could use \hfil\break instead.
-E-mail: {a.hakim,~s.r.marsland,~h.w.guesgen}@massey.ac.nz
-%\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.
-}% <-this % stops a space
+E-mail: ayesha.hakim@bzu.edu.pk
+\IEEEcompsocthanksitem Stephen~Marsland, and~Hans~W.~Guesgen are with the School of Engineering and Advanced Technology, Massey University, New Zealand. \protect\\
+E-mail: {s.r.marsland,~h.w.guesgen}@massey.ac.nz}% <-this % stops a space
 \thanks{}}
-
 
 % The paper headers
 %\markboth{IEEE Transactions on Affective Computing,~Vol.~6, No.~1, January~2013}%
@@ -209,8 +209,9 @@ In the work of Valstar et al.~\cite{valstar2006fully}, they detected the presenc
 Gunes et al.~\cite{gunes2009automatic} detected the emotion segments by finding the start and end of the neutral-onset-apex-offset-neutral phase from face and body videos by comparing each frame to the reference (neutral) frame as well as consecutive frames. Using the apex frame out of the detected emotion segment, they detected six basic emotions as well as boredom, anxiety, uncertainty, puzzlement, and surprise (positive, neutral, and negative) using facial expressions and body gestures. The system was tested on the Bimodal Face and Body Gesture (FABO)~\cite{gunes2006bimodal} dataset, where subjects were asked to act out certain emotion-eliciting scenarios in laboratory settings. The system detects the apex from the posed neutral-onset-apex-offset-neutral sequence of emotions, which has limited its use in naturalistic scenarios.
 
 To the best of our knowledge, so far none of the computational studies has focused on the analysis of temporal dynamics in order to understand the relationships between different emotions, the paths followed by emotions while moving from one state to another (i.e., emotion trajectories), or to study the change in emotion intensity through time.
-
-\section{Dataset}
+\section{Methodology}
+\label{sec_methodology}
+\subsection{Dataset}
 \label{sec_dataset}
 We have selected a dataset (the Interactive Emotional Dyadic Motion Capture (IEMOCAP) dataset from the Speech Analysis and Interpretation Laboratory (SAIL) at the University of South California (USC)~\cite{Busso08}) where ten actors were recorded during both scripted and improvised sessions with a set of reflective markers on their face and hands. The layout of the 53 facial markers, 2 hand markers, 4 wristbands markers, and 2 headbands markers is shown in Fig.~\ref{fig_marker_layout}. The facial markers provide detailed motion capture information about their facial expressions. High speed cameras capturing 120 frames per second were used to record the actors and the 3D positions of the facial markers was tracked with very high accuracy. 
 
@@ -225,25 +226,15 @@ The released version of the dataset contains approximately 12 hours of audiovisu
 
 During each interaction, only one of the two actors was motion captured at a time while performing improvised and scripted dialogs. Each dialog consists of almost 25 utterances/turns of each actor, where an utterance is a sentence or similar period during which one actor talks continuously. The dataset contains ten thousand and thirty nine utterances where each utterance consists of almost 11.4 words with an average duration of 4.5 seconds. 
 
-Within each dialog, each utterance of the two actors was annotated by three independent human evaluators into categorical labels (neutral, happiness, anger, sadness, surprise, disgust, fear, frustration, and excitement) as well as psychological data about emotion intensity (valence, activation, and dominance). These two approaches cover the categorical as well as continuous attributes of emotional representation. The emotion content of the dataset was annotated by the evaluators into categorical labels using the ANVIL tool~\cite{Kipp2001Anvil}, after sequentially watching the videos. In this way, the evaluators had information from audio and video channels as well as previous utterances in the dialog for assessing the emotional content of each utterance. It was assumed that within an utterance, there is no emotion transition (e.g., from happy to excited), however, the evaluators were allowed to select more than one emotion category to describe mixtures/blends of emotions, which are more common in natural communication. The estimated confusion matrix between the assigned categorical labels shows that there is an overlap between happiness and excitement as well as anger and frustration. Neutral, disgust, and anger are often get confused with frustration. Also, sadness is often confused with frustration and neutral.
+Within each dialog, each utterance of the two actors was annotated by three independent human evaluators into categorical labels (neutral, happiness, anger, sadness, surprise, disgust, fear, frustration, and excitement) as well as psychological data about emotion intensity (valence, activation, and dominance). 
 
-%\begin{figure*}[!]
-%\centering
-%\includegraphics[width=1\textwidth]{figures/Ch4/IEMOCAP_ANVIL.png}
-%\caption{The ANVIL annotation tool used for emotion evaluation of the utterances based on categorical and continuous attributes~\cite{Busso08}.}
-%\label{fig_anvil}
-%\end{figure*}
+These two approaches cover the categorical as well as continuous attributes of emotional representation. The emotion content of the dataset was annotated by the evaluators into categorical labels using the ANVIL tool~\cite{Kipp2001Anvil}, after sequentially watching the videos. In this way, the evaluators had information from audio and video channels as well as previous utterances in the dialog for assessing the emotional content of each utterance. It was assumed that within an utterance, there is no emotion transition (e.g., from happy to excited), however, the evaluators were allowed to select more than one emotion category to describe mixtures/blends of emotions, which are more common in natural communication. The estimated confusion matrix between the assigned categorical labels shows that there is an overlap between happiness and excitement as well as anger and frustration. Neutral, disgust, and anger are often get confused with frustration. Also, sadness is often confused with frustration and neutral.
 
 The evaluation-level limitation of the selected dataset is associated with its utterance-based annotation technique. Assuming the emotional content did not change much within an utterance (duration $\approx$ 4.5 seconds), the same label (or mixture of labels) was assigned to each frame in that utterance. The `silent' frames and those containing sounds of active listening like `mmhh' were not annotated at all. Another problem of the chosen dataset is that the human evaluators were sometimes inconsistent in labelling the data, since each one of them perceived and evaluated the emotions associated to an utterance in his own way. Due to the subjective nature of emotions, the inter-evaluator inconsistency is a common problem of all emotion datasets.
 
-\subsection{Data Preprocessing}
+\paragraph{Data Preprocessing}
 \label{sec_data_preprocessing}
-%\begin{figure}[t!]
-%\centering
-%\includegraphics[width=0.5\textwidth]{figures/Ch4/IEMOCA_data.png}
-%\caption{The distribution of data for each emotion category, \textit{Neu}: Neutral, \textit{Dis}: Disgust, \textit{Hap}: Happiness, \textit{Sur}: Surpsie, \textit{Sad}: Sadness, \textit{Ang}: Anger, \textit{Fea}: Fear, \textit{Fru}: Frustration, \textit{Exc}: Excitement, \textit{oth}: Other~\cite{Busso08}.}
-%\label{fig_IEMOCAP_data}
-%\end{figure}
+
 We used the locations of the marker points in 3D as the basis of our analysis, and chose $5,000$ frames of each of five emotions (happiness, excitement, anger, frustration, and sadness) and neutral state for each of the ten actors to form a training set of $300,000$ frames. It should be noted that the marker points were already aligned to make the nose marker at the center of each frame that removed any translation effects. The rotational effects were compensated by multiplying each frame by a rotational matrix. For details about markers alignment, refer to~\cite{Busso08}. 
 
 Each utterance was labelled by the three expert human evaluators in terms of discrete categories as well as emotion attributes (valence and activation). For the training set, we took frames from the utterances where all three experts agreed. We used six emotions rather than the full nine as for the missing emotions (disgust, surprise, and fear) there was insufficient data, sometimes as little as $2,000$ frames in total. Out of the six selected emotions, two (frustration and excitement) are the candidate basic emotions~\cite{ortony1990s, ekman1999basic}. The selection of the testing set would be described in Section~\ref{sec_shape_models} depending on the type of model (dependent or independent) used for training. For the testing set, there was no such condition of agreement by all three experts while choosing the frames.
@@ -286,12 +277,13 @@ Each frame of the dataset contains the motion capture information of 61 markers 
 
 As a result of these simplifications each emotion frame is represented by 28 markers points covering the forehead, eyebrows, eyes, cheeks, lips, and chin (Fig.~\ref{fig_markers_3D}). The location of marker points are in 3D, making it an 84D vector.
 
-\section{Shape Models}
+\subsection{Shape Models}
 \label{sec_shape_models}
 
 Based on the data from IEMOCAP we had sets of facial points with an associated emotion label. As described in Section~\ref{sec_data_preprocessing}, we are using the 3D locations of 28 marker points on the face for emotion recognition and analysis. We then develop two types of models: a model of only one actor at a time that we called the \textbf{speaker-dependent model}, and a model of nine out the ten actors that we called the \textbf{speaker-independent model}. 
 
-The \textbf{speaker-dependent model} is trained on $5000$ frames of each emotion of one actor only to form a training set of $30,000$ frames. We then used principal component analysis (PCA) to develop a face model of the given training set based on the method described in~\cite{ayesha hakim shape model paper}. We noticed that the first 7 PCs covered $93\%$ of the total variation of the training data out of which the first PC, which covers almost $50\%$ of the total variation, was describing the upward and downward movement of the mouth points. This movement of lips was experimentally shown to be highly correlated with talking~\cite{ayesha hakim von mises}, which is not directly connected with emotion recognition, and not much else, and so we discarded the first PC. Consequently, we chose to use six PCs (2-7) of the face model for our analysis.
+The \textbf{speaker-dependent model} is trained on $5000$ frames of each emotion of one actor only to form a training set of $30,000$ frames. We then used principal component analysis (PCA) to develop a face model of the given training set based on the method described in~\cite{ayesha hakim shape model paper}. We noticed that the first 7 PCs covered $93\%$ of the total variation of the training data out of which the first PC, which covers almost $50\%$ of the total variation, was describing the upward and downward movement of the mouth points. This movement of lips was experimentally shown to be highly correlated with talking~\cite{ayesha hakim shape models}, which is not directly connected with emotion recognition, and not much else, and so we discarded the first PC. Consequently, we chose to use six PCs (2-7) of the face model for our analysis. For details about the effects of each principal component on the mean face, refer to~\cite{ayesha hakim shape models}.
+
 We transformed the training data into the 6-D space of the selected six principal components. Each datapoint was then labelled with the majority vote of the three human experts, so that the training set consists of 30,000 points, each labelled with one of six emotions in the 6-D space. 
 
 To evaluate the speaker-dependent face model, we chose the continuous testing frames of the same actor on which the model was trained. That was the ideal situation as there was only one face involved leading to no speaker variability and the first PC correlated to talking was removed leading to no lexical variability. For classification of a test frame, it was transformed into the 6-D space of the dependent face model. We then computed the Mahalanobis distance between the test frame and the six emotion clusters. In this way, we get a set of six distances; one for each emotion in the model space. We use these distances to map the emotion into the activation-evaluation space~\ref{sec_mapping}.
@@ -301,7 +293,7 @@ The \textbf{speaker-independent model}  is trained on $5000$ frames of each emot
 To evaluate the speaker-independent face model, we chose the continuous testing frames of one of the ten actors that was not included in the training set. For classification of a test frame, it was transformed into the 11D space of the independent face model. We then computed the Mahalanobis distance between the test frame and the six emotion clusters to get a set of six distances; one for each emotion in the model space. We use these distances to map the emotion into the activation-evaluation space~\ref{sec_mapping}.
 
 %Reference-based Speaker Normalisation
-\subsection{Speaker Normalisation}
+\subsubsection{Speaker Normalisation}
 The speaker variability in the \textbf{speaker-independent model} is removed by reference-based speaker normalisation that is quite similar to the technique used in~\cite{ACTORIZING SPEAKER, LEXICAL AND EMOTIONAL VARIABILITIES OBSERVED IN FACIAL EXPRESSIONS}. 
 
 %edit it
@@ -315,7 +307,7 @@ m_{i,d}^{s'}=(m_{i,d}^{s'}-\mu_{i,d}^{s'}) \times \frac{\sigma_{i,d}^{ref}}{\sig
 
 After speaker normalisation, we retrain the \textbf{speaker-dependent model} on the normalised  $30,000$ frames containing all emotions of one actor only and used PCA to develop a normalised face model of that actor. We repeated the same experiment on the normalised $270,000$ frames of all excluding one speaker to get a normalised \textbf{speaker-independent model}. Section~\ref{sec_results} shows the comparison of all face models: speaker-dependent face model, speaker-independent face model, normalised speaker-dependent face model, and normalised speaker-independent face model.
 
-\subsection{Classification}
+\subsubsection{Classification}
 
 For classification based on each face model separately, we replaced each cluster (i.e., set of points labelled as one emotion) with the mean of that set, and also computed the covariance matrix (spread) of the data. We therefore ended up with six datapoints representing the mean of each set and an associated covariance matrix. 
 
@@ -331,532 +323,7 @@ $ D_{M}(\mathbf{x}) =\sqrt{(\mathbf{x}-\mathbf{\mu})^{T}\Sigma^{-1}(\mathbf{x}-\
 
 Computing the Mahalanobis distance is a computationally expensive process which calculates the covariance matrix and then its inverse. For efficient computation, we have used Matlab's \textit{mahal} from the Statistics toolbox to compute the Mahalanobis distance of each frame to each of the six emotion clusters. 
 
-
-
-%\subsection{The Effects of Each Principal Component}
-%\label{sec_effects_PCs}
-%Having already identified that PC1 was involved in talking, we chose to investigate the effects of the other four PCs of the full model as well. PC2 covers $28\%$ of the total variation of data. It controls the sideways movement of mouth points (lips). The outward movement of the lips contribute to the positive expressions (e.g., smile) while the inward movement gives the negative expressions (e.g., sad). The third PC covers $7.8\%$ of the total data variation and contributes to the upward and downward movement of eyebrows and forehead marker points, while PC4 covers $6\%$ of the total variation and contributed to the sideways movement (i.e., towards and away from the nose) of eyebrows and forehead marker points. The fifth PC covers $3\%$ of the variation of data and appears as a rather strange circular motion of the lips. Experimentally we observed that this PC contributed mainly to the laughing expression.
-%
-%Table~\ref{table_effetc_of_PC} describes the effect of each PC on the mean face, which is the same for both the female and male full face shape models. In the table, `+' means moving the mean face $\mu$ for positive weights $\lambda$, formulated as: $\mu + \lambda PC_{i}$  (where $\mu$ is the transformed mean face and $PC_{i}$ is the $i$th principal component, while `-' means using negative weights $\lambda$). Fig.~\ref{fig_full_face_PC2} shows the effects of varying PC2 ($\mu \* \pm3 \sigma$, where $\mu$ denotes the mean face and $\sigma$ denotes the standard deviation) for the full face of the female actor. 
-%
-%%$\mu \* +3 \sigma$
-%%std_v=sqrt(eigenvalues(5));
-%%
-%%PC is the principal component
-%%std_v is the eigenvalue of that principal component 
-%%X0 is the mean transformed face
-%%feature_evectors is the eigenvectors
-%%
-%%
-%%Re_X0=X0*feature_evectors'+mean_face;
-%%Y_plus=std_v*PC;
-%%
-%%Re_Y_plus=Re_X0+Y_plus;
-%%Re_Y_minus=Re_X0-Y_minus;
-%%
-%%
-%%`+' means moving the transformed mean face in the direction of first principal component, while `-' means in the opposite direction.
-%
-%%*************????????????????????????????
-%\begin{table}[tp!]
-%\centering
-%\begin{tabular}{|l|l|l|}
-%
-%	\hline 
-%	$PC2$
-%	&
-%	$+$
-%	&
-%	Outward movement of lips
-%	\\ 
-%	\hline
-%	$PC2$
-%	&
-%	$-$
-%	&
-%	Inward movement of lips
-%	\\ 
-%	\hline 
-%	$PC3$
-%	&
-%	$+$
-%	&
-%	Upward movement of eyebrows and forehead
-%	\\ 
-%	\hline
-%	$PC3$
-%	&
-%	$-$
-%	&
-%	Downward movement of eyebrows and forehead
-%	\\ 
-%	\hline
-%	$PC4$
-%	&
-%	$+$
-%	&
-%	Inward movement of eyebrows and forehead
-%	\\ 
-%	\hline
-%	$PC4$
-%	&
-%	$-$
-%	&
-%	Outward movement of eyebrows and forehead
-%	\\ 
-%	\hline
-%	$PC5$
-%	&
-%	$+$
-%	&
-%	Right to left circular movement of lips
-%	\\ 
-%	\hline
-%	$PC5$
-%	&
-%	$-$
-%	&
-%	Left to right circular movement of lips
-%	\\ 
-%	\hline
-%\end{tabular}
-%\caption{The effect of each PC on the mean face. For explanation, see the text.}
-%\label{table_effetc_of_PC}
-%\end{table}
-%
-%\subsubsection{Effect of each full, upper, and lower face PC}
-%\begin{figure*}[th!]
-%\begin{center}
-%		\subfloat[$\mu \* -3 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth]	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/-3_std.jpg}
-%		}
-%		\subfloat[$\mu \* -2 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/-2_std.jpg}
-%		}
-%		\subfloat[$\mu \* -1 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/-1_std.jpg}
-%		}
-%		\subfloat[$\mu$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/mean.jpg}
-%		}
-%		\subfloat[$\mu \* +1 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth]	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/+1_std.jpg}
-%		}
-%		\subfloat[$\mu \* +2 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/+2_std.jpg}
-%		}
-%		\subfloat[$\mu \* +3 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_full_face_PC_doing/PC_2_Updated/+3_std.jpg}
-%		}
-%		\caption{The effects of varying the second principal component (PC2) on the female full face model. $\mu$ denotes the mean face and $\sigma$ denotes the standard deviation.}
-%		\label{fig_full_face_PC2}
-%		\end{center}
-%\end{figure*}
-%
-%\begin{figure*}[ht!]
-%\begin{center}
-%		\subfloat[$\mu \* -3 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth]	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/-3_std.jpg}
-%		}
-%		\subfloat[$\mu \* -2 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/-2_std.jpg}
-%		}
-%		\subfloat[$\mu \* -1 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/-1_std.jpg}
-%		}
-%		\subfloat[$\mu$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/mean.jpg}
-%		}
-%		\subfloat[$\mu \* +1 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth]	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/+1_std.jpg}
-%		}
-%		\subfloat[$\mu \* +2 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/+2_std.jpg}
-%		}
-%		\subfloat[$\mu \* +3 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_upper_face_PC_doing/PC_2_Updated/+3_std.jpg}
-%		}
-%		\caption{The effects of varying the second principal component (PC2) on the female upper face. $\mu$ denotes the mean face and $\sigma$ denotes the standard deviation.}
-%		\label{fig_upper_face_PC2}
-%		\end{center}
-%\end{figure*}
-%
-%\begin{figure*}[ht!]
-%\begin{center}
-%		\subfloat[$\mu \* -3 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth]	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/-3_std.jpg}
-%		}
-%		\subfloat[$\mu \* -2 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/-2_std.jpg}
-%		}
-%		\subfloat[$\mu \* -1 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/-1_std.jpg}
-%		}
-%		\subfloat[$\mu$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/mean.jpg}
-%		}
-%		\subfloat[$\mu \* +1 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth]	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/+1_std.jpg}
-%		}
-%		\subfloat[$\mu \* +2 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/+2_std.jpg}
-%		}
-%		\subfloat[$\mu \* +3 \sigma$]
-%		{ 
-%		\centering
-%		\includegraphics[width=0.14\textwidth] 	{figures/Ch5/what_each_lower_face_PC_doing/PC_2_Updated/+3_std.jpg}
-%		}
-%		\caption{The effects of varying the second principal component (PC2) on the female lower face. $\mu$ denotes the mean face and $\sigma$ denotes the standard deviation.}
-%		\label{fig_lower_face_PC2}
-%		\end{center}
-%\end{figure*}
-%For the \textit{upper-face}, the first PC covers almost $46\%$ variation. Since this model cannot see the effects of talking, this PC identifies upward motion of the eyebrows and forehead, while the second PC also deals with similar movement and covers $34.6\%$ of the variation. Fig.~\ref{fig_upper_face_PC2} shows the effects of varying PC2 ($\mu \* \pm3 \sigma$, where $\mu$ denotes the mean face and $\sigma$ denotes the standard deviation) for the upper face of the female actor. %Table~\ref{table_numerical_eigenvectors} listed the numerical values demonstrating the direction of 3D movement of 17 marker points between $\pm 3 \sigma$. 
-%Considering the mean face as a reference, the values identify the upward movement of forehead and eyebrows marker points by varying PC2 from $-1\sigma$ to $-3\sigma$ and the downward movement of forehead and eyebrows marker points by varying PC2 from $+1\sigma$ to $+3\sigma$. The third PC, which covers $5.5\%$ of the variation highlights the inner brows moving upward, and the fourth PC ($4.3\%$) identifies the outer brow moving in the upward direction.
-%% the fifth PC identifies the right brow moving downward and the left brow moving in the upward direction. 
-%
-%In the case of the \textit{lower-face} model, the first PC covers $56.5\%$ of the variation of data and identifies the upward and downward movement of the mouth points. This movement of mouth points was experimentally shown to be highly correlated with talking, and so was discarded. The second PC covers $27.5\%$ variation deals with the sideways movement of mouth. Fig.~\ref{fig_lower_face_PC2} shows the effects of varying PC2 ($\mu \* \pm3 \sigma$) on the lower face of female actor. The first and second PCs of the lower face are same as that of the full face PCs. The third PC covers $7.6\%$ of the variation and highlights the upward and downward movement of cheeks, the fourth PC covers $3.2\%$ of the variation identifies the upward and downward movement of chin, while the fifth PC covers $2\%$ of the variation identifies the circular movement of lips, similar to the fifth PC of the full face. 
-%
-%It should be noted that all the figures are actually in 3D, but to get a clear view the viewpoint has been rotated by setting the azimuth and elevation equal to zero.
-%
-%\subsection{Performance Comparison}
-%\label{sec_performance}
-%Based on the shape models we had four methods of classifying emotions: using the joint model, or any one of the three models separately. As a comparison, we implemented two methods that have been used in the past: a set of rule-based classifiers~\cite{Ioannou05} and a set of Support Vector Machines (SVM)~\cite{Michel03}. These methods are described in this section. 
-%
-%\subsubsection{A rule-based emotion classifier}
-%In the previous section we looked at the effect of each principal component separately. This enabled us to create a simple rule-based classifier by observing how the PCs moved and effected the mean face. The rules we applied are listed in the second column of Table~\ref{table_rules}.
-%
-%\begingroup
-%\fontsize{11}{11}\selectfont
-%\begin{table*}[th!]
-%\begin{center}
-%\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{3cm}|>{\raggedright\arraybackslash}p{11cm}|}
-%%\begin{table}[htp]
-%%\centering
-%%\begin{tabular}{|>{\raggedright}p{3cm}|>{\raggedright}p{6cm}|>{\raggedright\arraybackslash}p{5cm}|}
-%\hline
-% & \textbf{Rules based on PCs} & \textbf{MPEG-4 FAPs}
-%\\
-%\hline
-%Happiness
-%& 
-%$PC2$ is positive, $PC3$ is positive, $PC2$ has larger magnitude than $PC3$
-%&
-%open\textunderscore jaw ($F_{3}$), lower\textunderscore t\textunderscore midlip ($F_{4}$), raise\textunderscore b\textunderscore midlip ($F_{5}$), stretch\textunderscore l\textunderscore cornerlip ($F_{6}$), stretch\textunderscore r\textunderscore cornerlip ($F_{7}$), raise\textunderscore l\textunderscore cornerlip ($F_{12}$), raise\textunderscore r\textunderscore cornerlip ($F_{13}$), close\textunderscore t\textunderscore l\textunderscore eyelid ($F_{19}$), close\textunderscore t\textunderscore r\textunderscore eyelid ($F_{20}$), close\textunderscore b\textunderscore l\textunderscore eyelid ($F_{21}$), close\textunderscore b\textunderscore r\textunderscore eyelid ($F_{22}$), raise\textunderscore l\textunderscore m\textunderscore eyebrow ($F_{33}$), raise\textunderscore r\textunderscore m\textunderscore eyebrow ($F_{34}$), lift\textunderscore l\textunderscore cheek ($F_{41}$), lift\textunderscore r\textunderscore cheek ($F_{42}$), stretch\textunderscore l\textunderscore cornerlip\textunderscore o ($F_{53}$), stretch\textunderscore r\textunderscore cornerlip\textunderscore o ($F_{54}$)
-%\\ 
-%\hline 
-%Excitement
-%&
-%$PC2$ is positive, $PC3$ is positive,  $PC3$ has larger magnitude than $PC2$
-%&
-%N/A
-%%\\
-%%\hline
-%%Laughing
-%%&
-%%$PC2$ is positive, $PC5$ is positive, $PC5$ has larger magnitude than $PC2$
-%%&
-%%N/A
-%\\
-%\hline
-%Anger
-%&
-%$PC2$ is negative, $PC3$ is positive, $PC4$ is negative
-%&
-%lower\textunderscore t\textunderscore midlip ($F_{4}$), raise\textunderscore b\textunderscore midlip ($F_{5}$), push\textunderscore b\textunderscore lip ($F_{16}$), depress\textunderscore chin ($F_{18}$), close\textunderscore t\textunderscore l\textunderscore eyelid ($F_{19}$), close\textunderscore t\textunderscore r\textunderscore eyelid ($F_{20}$), close\textunderscore b\textunderscore l\textunderscore eyelid ($F_{21}$), close\textunderscore b\textunderscore r\textunderscore eyelid ($F_{22}$), raise\textunderscore l\textunderscore i\textunderscore eyebrow ($F_{31}$), raise\textunderscore r\textunderscore i\textunderscore eyebrow ($F_{32}$), raise\textunderscore l\textunderscore m\textunderscore eyebrow ($F_{33}$), raise\textunderscore r\textunderscore m\textunderscore eyebrow ($F_{34}$), raise\textunderscore l\textunderscore o\textunderscore eyebrow ($F_{35}$), raise\textunderscore r\textunderscore o\textunderscore eyebrow ($F_{36}$), squeeze\textunderscore l\textunderscore eyebrow ($F_{37}$), squeeze\textunderscore r\textunderscore eyebrow ($F_{38}$)
-%\\
-%\hline
-%Frustration
-%&
-%$PC2$ is negative, $PC3$ is negative, $PC4$ is negative
-%&
-%N/A
-%\\
-%\hline
-%Sadness
-%&
-%$PC2$ is negative, $PC3$ is negative, $PC4$ is positive
-%&
-%close\textunderscore t\textunderscore l\textunderscore eyelid ($F_{19}$), close\textunderscore t\textunderscore r\textunderscore eyelid ($F_{20}$), close\textunderscore b\textunderscore l\textunderscore eyelid ($F_{21}$), close\textunderscore b\textunderscore r\textunderscore eyelid ($F_{22}$), raise\textunderscore l\textunderscore i\textunderscore eyebrow ($F_{31}$), raise\textunderscore r\textunderscore i\textunderscore eyebrow ($F_{32}$), raise\textunderscore l\textunderscore m\textunderscore eyebrow $(F_{33}$), raise\textunderscore r\textunderscore m\textunderscore eyebrow ($F_{34}$), raise\textunderscore l\textunderscore o\textunderscore eyebrow ($F_{35}$), raise\textunderscore r\textunderscore o\textunderscore eyebrow ($F_{36}$)
-%\\
-%\hline
-%\end{tabular}
-%\caption{Rules for classifying emotions based on the direction and magnitude of the selected full face principal components and the corresponding vocabulary of FAPs associated with the expression of each basic emotion. The vocabulary of FAPs is taken from~\cite{raouzaiou2002parameterized}. The description of each of the mentioned FAP is listed in Table~\ref{table_FAPS_desc}. The relationship between PCs and the corresponding FAPs is discussed in the text.}
-%\label{table_rules}
-%\end{center}
-%\end{table*}
-%\endgroup
-%\normalsize
-%
-%%stretch\textunderscore l\textunderscore cornerlip (F6), stretch\textunderscore r\textunderscore cornerlip (F7), raise\textunderscore l\textunderscore cornerlip (F12), raise\textunderscore r\textunderscore cornerlip (F13),
-%
-%The rules presented in the second column of Table~\ref{table_rules} also highlight something that is known from psychology, and that we observed in our data, namely that anger and frustration look similar on the face, as do happiness and excitement. 
-%%These clusters of points overlap significantly, as shown in Fig.~\ref{fig_overlap}(a) and Fig.~\ref{fig_overlap}(b). 
-%According to these rules, anger and frustration share the negative value of PC2 and PC4 and happiness and excitement both have the positive value of PC2. Happiness and anger are well separated, while sadness and anger also overlap at some points since both have the negative value of PC2.
-%
-%We compared these rules with the vocabulary of facial animation parameters (FAPs) required for the description of facial expressions of basic emotions as presented in~\cite{raouzaiou2002parameterized}. FAPs are a set of parameters defined in the MPEG-4 standard~\cite{Pandzic02} for facial animation purposes. These parameters are strongly related to the action units (AUs) which describe the smallest visually perceptible facial movements. There are 66 low-level FAPs used to describe the movements of facial features including eyes, nose, lips, jaw, cheeks, mouth, ears. Table~\ref{table_rules} lists the vocabulary of FAPs associated with the expression of happiness, anger, and sadness. Since frustration and excitement are the candidate basic emotions we could not find the FAPs associated with the facial expressions of these emotions. The description of each of the mentioned FAP is listed in Table~\ref{table_FAPS_desc}. The vocabulary for each emotion lists all FAPs that may be associated with the expression of that particular emotion; this does not mean that they all would necessarily produce the corresponding emotion~\cite{raouzaiou2002parameterized}.
-%
-%\begingroup
-%\fontsize{11}{11}\selectfont
-%\begin{table}[th!]
-%\centering
-%\begin{tabular}{|>{\raggedright}p{3.1cm}|>{\raggedright\arraybackslash}p{4.4cm}|}
-%\hline
-%\textbf{FAP Name} & \textbf{Description}
-%\\
-%\hline
-%open\textunderscore jaw ($F_{3}$) & Vertical jaw displacement
-%\\
-%\hline 
-%lower\textunderscore t\textunderscore midlip ($F_{4}$) & Vertical top middle inner lip displacement
-%\\
-%\hline 
-%raise\textunderscore b\textunderscore midlip ($F_{5}$) & Vertical bottom middle inner lip displacement
-%\\
-%\hline
-%stretch\textunderscore l\textunderscore cornerlip ($F_{6}$) & Horizontal displacement of left inner lip corner
-%\\
-%\hline 
-%stretch\textunderscore r\textunderscore cornerlip ($F_{7}$) & Horizontal displacement of right inner lip corner
-%\\
-%\hline
-%raise\textunderscore l\textunderscore cornerlip ($F_{12}$) & Horizontal displacement of left inner lip corner
-%\\
-%\hline
-%raise\textunderscore r\textunderscore cornerlip ($F_{13}$) & Horizontal displacement of right inner lip corner
-%\\
-%\hline
-%push\textunderscore b\textunderscore lip ($F_{16}$) & Depth displacement of bottom middle lip
-%\\
-%\hline
-%depress\textunderscore chin ($F_{18}$) & Upward and compressing movement of the chin
-%\\
-%\hline
-%close\textunderscore t\textunderscore l\textunderscore eyelid ($F_{19}$) & Vertical displacement of top left eyelid
-%\\
-%\hline
-%close\textunderscore t\textunderscore r\textunderscore eyelid ($F_{20}$) & Vertical displacement of top right eyelid
-%\\
-%\hline
-%close\textunderscore b\textunderscore l\textunderscore eyelid ($F_{21}$) & Vertical displacement of bottom left eyelid
-%\\
-%\hline
-%close\textunderscore b\textunderscore r\textunderscore eyelid ($F_{22}$) & Vertical displacement of bottom right eyelid
-%\\
-%\hline
-%raise\textunderscore l\textunderscore i\textunderscore eyebrow ($F_{31}$) & Vertical displacement of left inner eyebrow
-%\\
-%\hline
-%raise\textunderscore r\textunderscore i\textunderscore eyebrow ($F_{32}$) & Vertical displacement of right inner eyebrow
-%\\
-%\hline
-%raise\textunderscore l\textunderscore m\textunderscore eyebrow ($F_{33}$) & Vertical displacement of left middle eyebrow
-%\\
-%\hline 
-%raise\textunderscore r\textunderscore m\textunderscore eyebrow ($F_{34}$) & Vertical displacement of right middle eyebrow
-%\\
-%\hline
-%raise\textunderscore l\textunderscore o\textunderscore eyebrow ($F_{35}$) & Vertical displacement of left outer eyebrow
-%\\
-%\hline
-%raise\textunderscore r\textunderscore o\textunderscore eyebrow ($F_{36}$) & Vertical displacement of right outer eyebrow
-%\\
-%\hline
-%squeeze\textunderscore l\textunderscore eyebrow ($F_{37}$) & Horizontal displacement of left eyebrow
-%\\
-%\hline
-%squeeze\textunderscore r\textunderscore eyebrow ($F_{38}$) & Horizontal displacement of right eyebrow
-%\\
-%\hline
-%lift\textunderscore l\textunderscore cheek ($F_{41}$) & Vertical displacement of left cheek
-%\\
-%\hline
-%lift\textunderscore r\textunderscore cheek  ($F_{42}$) &  Vertical displacement of right cheek
-%\\
-%\hline
-%stretch\textunderscore l\textunderscore cornerlip\textunderscore o ($F_{53}$) & Horizontal displacement of left outer lip corner
-%\\
-%\hline
-%stretch\textunderscore r\textunderscore cornerlip\textunderscore o  ($F_{54}$) & Horizontal displacement of right outer lip corner
-%\\
-%\hline
-%\end{tabular}
-%\caption{Description of each MPEG-4 FAPS mentioned in Table~\ref{table_rules}.}
-%\label{table_FAPS_desc}
-%\end{table}
-%\endgroup
-%\normalsize
-%
-%For an expression of happy emotion, we observed that PC2 (which is associated with the horizontal movement of lips) varies in the positive direction. The horizontal movement of lips is described by the facial animation parameters $F_{6}$, $F_{7}$, $F_{12}$, $F_{13}$ and the associated movement of cheeks is described by $F_{41}$, $F_{42}$, $F_{53}$, and $F_{54}$. We have excluded eyelids markers to avoid false poitives caused by blinking, so did not observe $F_{19}$, $F_{20}$, $F_{21}$, and $F_{22}$ describing eyelids movements. $F_{33}$ and $F_{34}$ are associated with the vertical displacement of eyebrows, which is described by the variation of PC3 in positive direction. We did not observe $F_{3}$, $F_{4}$, and $F_{5}$ for an expression of happy emotion in our data. These FAPs are used to describe laughing (open mouth) expression of happiness, which in our case is described by PC5. 
-%
-%For angry emotion, we observed that PC2 varies in the negative direction. The horizontal inward movement of lips is described by $F_{16}$ and the associated chin movement is described by $F_{18}$. We did not observe $F_{19}$, $F_{20}$, $F_{21}$, and $F_{22}$ describing eyelids movements. $F_{31}$, $F_{32}$, $F_{33}$, $F_{34}$, $F_{35}$, and $F_{36}$ are associated with the vertical displacement of eyebrows, which is described by the variation of PC3 in negative direction. $F_{37}$ and $F_{38}$ are associated with the horizontal displacement of eyebrows, which is described by the variation of PC4 in negative direction.
-%
-%For an expression of sad emotion, we observed the variation of PC2 in negative direction but FAPs vocabulary does not include any such movement of lips. We did not observe $F_{19}$, $F_{20}$, $F_{21}$, and $F_{22}$ describing eyelids movements. $F_{31}$, $F_{32}$, $F_{33}$, $F_{34}$, $F_{35}$, and $F_{36}$ are associated with the vertical displacement of eyebrows, which is described by the variation of PC3 in positive direction. We also observed the variation of PC4 associated with the horizontal inward displacement of eyebrows in sad expression, which is not included in FAPs vocabulary.
-%
-%%
-%%\begin{figure*}[t!]
-%%\begin{center}
-%%		\subfloat[Anger and Frustration]
-%%		{ 
-%%		\centering
-%%		\includegraphics[width=0.45\textwidth]	{figures/Ch5/ang_fru.png}
-%%		}
-%%		\subfloat[Happiness and Excitement]
-%%		{ 
-%%		\centering
-%%		\includegraphics[width=0.45\textwidth] 	{figures/Ch5/hap_exc.png}
-%%		}
-%%		\\
-%%		\subfloat[Happiness and Anger]
-%%		{ 
-%%		\centering
-%%		\includegraphics[width=0.45\textwidth]	{figures/Ch5/hap_ang.png}
-%%		}
-%%		\subfloat[Sadness and Anger]
-%%		{ 
-%%		\centering	
-%%		\includegraphics[width=0.45\textwidth] 	{figures/Ch5/ang_sad.png}
-%%		}
-%%		\\
-%%		\subfloat[Excitement and Frustration]
-%%		{ 
-%%		\centering
-%%		\includegraphics[width=0.45\textwidth]	{figures/Ch5/exc_fru.png}
-%%		}
-%%		\subfloat[Happiness and Sadness]
-%%		{ 
-%%		\centering	
-%%		\includegraphics[width=0.45\textwidth] 	{figures/Ch5/hap_sad.png}
-%%		}
-%%\caption{Positions of images in the space of the first three principal components of some of the transformed emotion clusters of full face data in 4D space. All the figures are in 3D, but to get a clear view the viewpoint has been rotated by setting the azimuth and elevation to some suitable value. The figure needs coloured print to differentiate between different clusters.}
-%%\label{fig_overlap}
-%%\end{center}
-%%\end{figure*}
-%
-%\subsubsection{Support Vector Machines}
-%
-%The Support Vector Machine (SVM) is a popular machine learning technique for emotion recognition~\cite{Michel03}. We used an SVM with a quadratic kernel using Sequential Minimal Optimization (SMO) method~\cite{Platt99}, implemented using Matlab's \emph{svmclassify} from the Bioinformatics toolbox. The SVM is a binary classifier, so we convert it to a multi-class classifier by using one-versus-all training, where a separate SVM is trained to recognise each class, compared to all of the others. As a result, we obtained six SVMs, one for each emotion. 
-%
-%Each SVM is trained on the training data with the labels where at least two human observers agreed. It should be noted that the SVMs are not trained on the transformed data in 4D space using PCA. Classification was then performed on the basis of class membership ($\pm1$), where $+1$ means successfully matched to the training class.
-\section{Analysis of Circular Data}
-\label{sec_analysis}
-
-\begin{figure*}[tp!]
-      \centering
-      \includegraphics[scale=0.5]{figures/Ch6/vector_addition.png}
-      \caption{Illustration of the resultant vector direction and length (in grey) obtained by vector addition of (a) $60\degree, 180\degree, 300\degree$, (b) $120\degree, 180\degree, 240\degree$, and (c) $150\degree, 180\degree, 210\degree$. All the angles start from the horizontal zero-direction. The light grey circle is the unit circle. In (a), we cannot see the resultant vector of length zero, it resides at the centre of the circle. This picture is taken from~\cite{berens2009circstat}.}
-      \label{fig_vector_addition}
-\end{figure*}
-
-Angular observations may be regarded as observations on a circle of unit radius. A single observation $\theta$ measured in radians ($0<\theta \leq 2\pi$), is then a unit vector, and the data can be described as circular data or directional data~\cite{mardia1972statistics}. The Cartesian coordinates of the point at the end of the vector from the origin are $(\cos\theta, \sin\theta)$, while the polar coordinates are $(1, \theta)$. 
-
-Angular observations arise in many different contexts, e.g., studies of animal navigation in biology, seasonal fluctuation data in medicine, wind direction data in meteorology, and dip and declination data in geology~\cite{gill2010circular}. From psychological studies (as discussed in Section 2.5), we know that emotions are related to each other in a circular manner~\cite{plutchik1980emotion}, and the distance from an emotional state to the origin of the activation-evaluation space can be interpreted as the intensity of emotion~\cite{russell1997shall}. The activation-evaluation space is a disk of potential emotions, and so a random variable describing emotional data is a circular random variable.
-
-Due to the circular geometry of the sample space, the standard statistical techniques cannot be used to analyse emotion data. Suppose, $x_{1}, x_{2},\cdots ,x_{n}$ are $n$ independent observations on a circle of unit radius, such that $0< x_{i} \leq 2\pi$ where $i=1,2,\cdots, n$. The mean $\bar{x}$ of these observations cannot be calculated as $\dfrac{1}{n} \sum \limits_{i=1}^n x_{i}$. The reason for this is that a circle does not have a fixed starting or ending point because the beginning and end of the circle coincides: $0\degree = 360\degree$. For example, consider a sample of size 2 consisting of two angles $1\degree$ and $359\degree$. The arithmetic mean of these two angles is $180\degree$, which is different from the geometrical mean of $0\degree$~\cite{mardia1972statistics}.
-
-It is therefore appropriate to regard angular observations on the circle as unit vectors in the plane, and take the geometric mean of these vectors, referred to as the resultant vector. Fig.~\ref{fig_vector_addition} (taken from~\cite{berens2009circstat}) illustrates the resultant vector direction and length obtained by adding three different angles on the circle. Fig.~\ref{fig_vector_addition}(a) illustrates the mean of three angles ($60\degree, 180\degree, 300\degree$) yielding a resultant vector length of zero (we cannot see the resultant vector of length zero, it resides at the origin) because the points are exactly uniformly spaced around the circle. Fig.~\ref{fig_vector_addition}(b) represents the mean of three angles ($120\degree, 180\degree, 240\degree$) yielding a resultant vector length of $\dfrac{2}{3}$, with a mean direction of $180\degree$. Fig.~\ref{fig_vector_addition}(c) represents the mean of three angles ($150\degree, 180\degree, 210\degree$) yielding a resultant vector length of $0.9107$, with a mean direction of $180\degree$. All the angles are taken from the horizontal zero-direction. It is clear from these figures that only if the observed directions on the circle are tightly clustered around the mean direction will the length of mean resultant vector be almost $1$.
-
-\subsection{Circular distribution}
-A circular distribution is a probability distribution whose total probability is concentrated on the circumference of a unit circle~\cite{jammalamadaka2001topics}. A given function $f$ is the probability density function of an absolutely continuous circular distribution if and only if:
-
-\begin{equation}
-f(\theta) \geq 0, \;\;\; -\infty \leq \theta \leq \infty
-\end{equation}
-\begin{equation}
-f(\theta+2\pi) = f(\theta), \;\;\; -\infty \leq \theta \leq \infty
-\end{equation}
-\noindent and,
-\begin{equation}
-\int \limits_{0}^{2\pi} f(\theta) d\theta=1.
-\end{equation}
-
-\noindent In this case, $\theta$ will be described as a continuous random variable~\cite{mardia1972statistics}.
-
-\subsection{Statistical approaches to modelling circular data}
-The majority of the circular probability distribution models are derived from the standard linear models or are their circular analogues. The main distributions among the continuous circular distributions are the uniform distribution, and the von Mises distribution. Any linear distribution can be wrapped around the circumference of the circle of unit radius. Such distributions are called wrapped distributions. Suppose $x$ is a random variable on the line, the random variable $x_{w}$ of the wrapped distribution is given by $x_{w} =x(\bmod{2\pi})$. The most common among the wrapped distributions are the wrapped normal distribution and the wrapped Cauchy distribution~\cite{fisher1995statistical, jammalamadaka2001topics, mardia1972statistics}.
-
-%Like linear data, the uniform distribution on circle is the most basic distribution model. It is a unique circular distribution which is invariant under rotation and reflection~\cite{mardia2009directional}. Fig.~\ref{fig_uniform_dist} shows the density plot of a circular uniform distribution. In this model, all directions between $0$ and $2 \pi$ are equally likely. Often uniform distribution are unsuitable to model distributions with directional data, which is the case with emotion data.
-%
-%\begin{figure}[t!]
-%      \centering
-%      \includegraphics[scale=0.6]{figures/Ch6/uniform_dist.png}
-%      \caption{The density plot of a circular uniform distribution.}
-%      \label{fig_uniform_dist}
-%\end{figure}
-
-The von Mises probability distribution function (pdf) is the most common model for symmetric uni-modal samples of circular data and is a circular analogue of the standard normal distribution~\cite{mardia1972statistics}. This distribution was introduced by Richard von Mises in 1918, in order to study the deviation of measured atomic weights from integral values. In directional statistics its  importance is almost the same as that of the normal distribution on the line~\cite{fisher1995statistical, jammalamadaka2001topics, mardia1972statistics}. The von Mises distribution is a popular choice due to the possibility of calculating the maximum likelihood parameter estimations and the fact that it is easy to interpret. 
-
-The von Mises distribution depends on two parameters: the mean direction $\mu$ and the concentration parameter $K$, which are analogous to $\mu$ and $\sigma^{2}$ of the standard normal distribution. For $K=0$, the von Mises distribution reduces to the uniform distribution, while for large $K$, the distribution becomes the wrapped normal distribution~\cite{collett1981discriminating, downs1967some}. For $K \rightarrow \infty$, the distribution becomes concentrated at a single point $\theta=\mu$. The von Mises distribution will be described in detail in Section~\ref{sec_von_Mises}.
-
-The wrapped normal distribution has the same parameters $\mu$ and $\sigma^{2}$, as the standard normal distribution. The wrapped normal distribution is also uni-modal and symmetric about $\theta=0$. Fig.~\ref{fig_wrapped_normal} shows the probability density plots for three different sets of datapoints modelled using wrapped normal distributions with selected parameters $\mu$ and $\sigma^{2}$. The red circles show the density estimate based on the observed data. The distribution is highly sensitive to the parameter of $\sigma^{2}$.
-
-\begin{figure*}[t!]
-      \centering
-      \includegraphics[scale=0.45]{figures/Ch6/wrapped_normal.png}
-      \caption{The probability density plots for three different sets of datapoints modelled using wrapped normal distributions with selected parameters $\mu$ and $\sigma^{2}$. The red circles show the density estimate based on the observed data. Picture taken from~\cite{gill2010circular}.}
-      \label{fig_wrapped_normal}
-\end{figure*}
-
-In the case of data with heavier tails, the wrapped Cauchy distribution may be considered. It is obtained by wrapping the linear Cauchy distribution around the circumference of a unit circle. Its mean and variance are undefined. Fig.~\ref{fig_wrapped_cauchy} shows a probability density plot for $100$ datapoints randomly drawn from a wrapped Cauchy distribution centered at $\pi$ on the unit circle. The `heavy tails' are expressed as a large number of points that fall far away from $\pi$. The probability density function of the wrapped Cauchy distribution $c(\theta, R)$, is a function of $\theta$ and the resultant vector $R$ is the Poisson kernal~\cite{mardia1972statistics}.
-
-\begin{figure}[t!]
-      \centering
-      \includegraphics[scale=0.3]{figures/Ch6/wrapped_cauchy.png}
-      \caption{The probability density plot for $100$ datapoints randomly drawn from a wrapped Cauchy distribution. The red circle shows the density estimate based on the observed data. Picture taken from~\cite{gill2010circular}.}
-      \label{fig_wrapped_cauchy}
-\end{figure}
-
-\subsection{Selection of an appropriate circular distribution}
-
-Based on observations of the datapoints mapped into activation-evaluation space (using the method described in the next section), we believe that our data is approximately normal in a local neighbourhood. Therefore, the uniform probability distribution is not suitable to describe this data. Among the normal distributions, the von Mises distribution and the wrapped normal distribution closely approximate each other. As already mentioned, for large $K$, the von Mises distribution is transformed to the wrapped normal distribution with mean $\mu$ and variance $\frac{1}{K}$. Also, there is satisfactory agreement for moderate values of their respective concentration parameters~\cite{stephens1963random}.
-
-Like the linear normal distribution, for the von Mises distribution the maximum likelihood estimation of parameters, which is relatively complicated for other circular distributions, is simple. Also, it maximises the entropy for a fixed circular mean and variance. On the other hand, the wrapped normal distribution is a natural adaptation of the linear normal distribution to the circle. Most of the properties of the wrapped normal distribution hold true for the von Mises distribution and vice-versa, so we choose the one with simpler maximum likelihood estimation of parameters.
-
-We have chosen to use the von Mises probability distributions to represent the distributions of six basic emotions, since it allows a feasible maximum likelihood estimate of its parameters. Also, we will use the von Mises mixture model to interpolate complex emotions. The von Mises mixture model will be described in Section~\ref{sec_von_Mises}. We have used the \emph{CircStat} toolbox~\cite{berens2009circstat} of Matlab for the statistical analysis of circular data.
-
-%\section{Mapping facial points to weighted basic emotions}
-%\label{sec_shape_models}
-
-\section{Mapping emotions into the activation-evaluation space}
+\subsection{Mapping emotions into the activation-evaluation space}
 \label{sec_mapping}
 
 %We have calculated the Mahalanobis distance of each test frame to each of the six basic emotions using the shape models (using the method described in Section~\ref{sec_shape_models}). 
@@ -916,7 +383,7 @@ To calculate average angles it is not appropriate to use the linear statistical 
 
 $\mu$ is the mean direction and $\bar{R}$ corresponds to the mean intensity of emotions and neutral state in the activation-evaluation space. This gave us locations for the basic emotions and the neutral state. The location of each test frame is also calculated by the using equation~\ref{eq:meanint} and~\ref{eq:meandir}.
 
-\subsection{von Mises Mixture Model}
+\subsubsection{von Mises Mixture Model}
 \label{sec_von_Mises}
 
 A circular variable $\theta$ is said to have a von Mises distribution if the probability density function is given by:
@@ -925,28 +392,11 @@ m(\theta;K,\mu) = \frac {1}{2 \pi I_{0} (K)} e^{[K\cos (\theta - \mu)]}
 \end{equation}
 where $0 \leq \theta < 2 \pi$, $K > 0$ and $0\leq\mu<2\pi$.
 
-The parameter $\mu$ is the mean direction and $K$ is the concentration parameter, which is analogous to the (inverse) variance: the density at the mode depends on $e^{2K}$ and the larger the value of $K$, the greater is the clustering around the mode. Figure~\ref{fig_density}(a) shows the effect on density of the von Mises distribution for a fixed mean $\mu=0\degree$, and varying $K=\frac{1}{2}, 1, 2, 3, 4$, while figure~\ref{fig_density}(b) shows the effect on the density for fixed $K=1$, and varying $\mu=0\degree, 60\degree, 120\degree, 180\degree$. The distribution is uni-modal and symmetric about $\mu$. $I_{0}(K)$ is a normaliser to turn this into a probability density function and consists of a modified Bessel function of the first kind of order zero~\cite{chang1996computation}:
+The parameter $\mu$ is the mean direction and $K$ is the concentration parameter, which is analogous to the (inverse) variance: the density at the mode depends on $e^{2K}$ and the larger the value of $K$, the greater is the clustering around the mode. The distribution is uni-modal and symmetric about $\mu$. $I_{0}(K)$ is a normaliser to turn this into a probability density function and consists of a modified Bessel function of the first kind of order zero~\cite{chang1996computation}:
 
 \begin{equation}
 I_{0}(K)= \sum \limits_{r=0}^\infty \frac{1}{r!^{2}} \left(\frac{1}{2}(K)^{2r}\right)
 \end{equation}
-
-\begin{figure*}[tp!]
-\begin{center}
-		\subfloat[$\mu=0\degree$ and $K=0.5, 1, 2, 3, 4$]
-		{ 
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/Ch6/change_k.png}
-		}
-		\subfloat[$K=1$ and $\mu=0\degree, 60\degree, 120\degree, 180\degree$]
-		{ 
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/Ch6/change_mu.png}
-		}
-\end{center}
-\caption{The effect on the density of von Mises distribution for (a) fixed mean direction $\mu$ and varying concentration parameter $K$ and (b) fixed concentration parameter $K$ and varying mean direction $\mu$.}
-\label{fig_density}
-\end{figure*}
 
 Although each emotion class is uni-modal, we cannot fit one von Mises distribution to the full data as it is the mixture of six different emotion classes. Such multi-modal distributions may be regarded as mixtures of uni-modal distributions~\cite{mardia1972statistics}. We used a finite mixture model of six uni-modal von Mises distributions, given by: 
 
@@ -956,11 +406,11 @@ M=\sum \limits_{j=1}^6 \gamma_{j}m_{j}(\theta)
 
 where $\gamma_{j}$ are non-negative weights that sum to one. We have already calculated the mean direction $(\mu_j)$ of each of the six reference emotions in the space using Eq.~(\ref{eq:meandir}), and the methods of estimating $K_{j}$ and $\gamma_{j}$ are described in the following section.
 
-\subsection{Estimating the Parameters of the Mixture Model}
+\subsubsection{Estimating the Parameters of the Mixture Model}
 \label{sec_est_para}
 There are several ways to estimate the parameters on which the mixture model depends~\cite{mardia1972statistics}. We have used the usual maximum likelihood estimate for $K_{j}$. However, the weights $\gamma_{j}$ of each emotion model are estimated by using the distances to the six emotions calculated by the shape models.
 
-\subsubsection{Estimating the concentration parameter}
+\paragraph{Estimating the concentration parameter}
 \label{sec_est_kappa}
 The concentration parameter $K_{j}$ is estimated by using the Fisher equation~\cite{fisher1995statistical}:
 \begin{equation}
@@ -981,273 +431,9 @@ $\hat{K}_{ML}$ may be biased if the sample size ($n$) and $\bar{R}$ are small (s
 
 \noindent This is a standard approach for estimating the concentration parameter~\cite{fisher1995statistical, mardia1972statistics}.
 
-\subsubsection{Estimating the weights}
+\paragraph{Estimating the weights}
 \label{sec_est_weight}
 We have already calculated the Mahalanobis distance of each test frame to each of the six basic emotions using the shape models. We want to position each test frame in activation-evaluation space using the positions of the basic emotions. However, the Mahalanobis distance is an unsigned quantity and so we do not know the direction between the test frame and the mean of each of the clusters of basic emotions. Since we have assumed that each emotion lies along a radial line in the activation-evaluation space we want to compute the intensity of each of the basic emotions as a component of the complex emotion. We did this starting at the position of the basic emotion and then by applying a simple rule to move along that radial line: if the distance of the test frame from neutral is less than the mean of a particular emotion, then the distance of the test frame from that emotion should be towards neutral i.e., its intensity decreases and comes close to neutral and vice-versa. We convert these distances to weights $(\gamma_{j})$ using equation~\ref{eq_weights}.
-
-\section{Analysis of Emotion Dynamics}
-\label{sec_analysis}
-Within the following section the methods used to test the proposed hypotheses are presented, together with the results of those tests.
-
-\paragraph*{Hypothesis 1: The paths among emotions form `smooth' trajectories in the space.}
-\label{para_hypothesis_1}
-
-\begin{figure*}[!tp]
-\begin{center}
-\subfloat[]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/angular_dis_up.png}
-}
-\subfloat[]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/hurst_updated.png}
-}
-\end{center}
-\caption{Test of smoothness of emotion paths corresponding to each conversation in the testing set. For explanation, see the text.}
-\label{fig_hurst}
-\end{figure*}
-
-In order to test the first hypothesis,  we first need to define `smoothness' of an emotion trajectory. After extensive review of the literature, we could not find any standard definition. However, if we consider an emotion trajectory as a time series (sequence of values at successive time points following a non-random order), then its smoothness may be defined as a measure of its persistence with time. A random time series, e.g., Brownian motion, is not smooth, as it is not persistent with time. On the basis of this definition, we may say that if the points in the emotion space move in a predictable manner then the resulting trajectory is smooth/persistent with time.
-
-We measure the smoothness of emotion points trajectories in the activation-evaluation space using two approaches: \emph{first}, by measuring the time derivative of angular displacement (angular velocity) and \emph{second}, by estimating the Hurst exponent ($H$)~\cite{qian2004hurst}. The time derivative of angular displacement determines the change in the angle with time; the smaller the change, the smoother the trajectory and vice-versa. It is approximated by:
-
-\begin{center}
-$\dot{\theta_{t}}=\theta_{t}-\theta_{t-1}$  \\
-\end{center}
-
-\noindent where $t=2,3,\cdots,n$ and $n=$ total number of frames in the video. Fig.~\ref{fig_hurst}(a) plots the time derivatives of angular displacement of the emotion points during each conversation in the testing set. Smaller values imply smooth emotion trajectories.
-
-The Hurst exponent is a statistical measure of persistence and predictability of a time series, calculated by rescaled range $\left(\frac{R_{t}}{S_{t}}\right)$ analysis, where $R_{t}$ is the rescaled range and $S_{t}$ is the standard deviation of the time series. The calculation of the rescaled range $R_{t}$ of the time series will be described shortly. The greater the value of $H$ $(0.5<H<1)$, the smoother the time series, $H=0.5$ means a random time series. Fig.~\ref{fig_hurst}(b) plots the the Hurst exponent as a measure of smoothness of emotion trajectories in the activation-evaluation space for each conversation in the testing set. We estimated $H$ for the time series representing the size of `change' between pairs of consecutive points in the space as a function of valence and activation. Suppose $X_{t}$ denotes the time series where $t=2,3,\cdots,n$ and $n=$ total number of frames in the video. The size of `change' for each frame is calculated as the Euclidean distance between the time derivative of valence $(\dot{V_{t}})$ and the time derivative of activation $(\dot{A_{t}})$ in the activation-evaluation space:
-
-%\begin{center}
-%$\dot{V_{t}}=\parallel V_{t}-V_{t-1} \parallel$  \\
-%$\dot{A_{t}}=\parallel A_{t}-A_{t-1} \parallel$ \\
-%\end{center}
-\begin{center}
-$\dot{V_{t}}= V_{t}-V_{t-1} $  \\
-$\dot{A_{t}}= A_{t}-A_{t-1} $ \\
-\end{center}
-
-\noindent where the $t$ index represents the $t^{th}$ element of the time series.
-
-\begin{equation}
-\label{eq_size_of_change}
-\text{size of change}=\sqrt{\dot{V_{t}}^{2}+\dot{A_{t}}^{2}}
-\end{equation}
-
-\noindent The rescaled range $R_{t}$ of time series $(X_{t})$ is calculated by:
-
-\begin{enumerate}
-\item Calculate the mean-centred time series $Y_{t}=X_{t}-\mu$, where $\mu$ is the mean of the time series.
-\item Calculate the cumulative sum of $Y_{t}$,
-\begin{center}
-$Z_{t}=\sum \limits_{i=1}^t Y_{i}$
-\end{center}
-\item Calculate the rescaled range $R_{t}$ of time series,
-\begin{center}
-$R_{t}=\max(Z_{1}, Z_{2}, \cdots, Z_{t}) - \min(Z_{1}, Z_{2}, \cdots, Z_{t})$
-\end{center}
-\end{enumerate}
-
-\noindent $S_{t}$ is the standard deviation of the time series. The ratio $\frac{R_{t}}{S_{t}}$ scales as a power law with time so that:
-\begin{center}
-%$\left(\frac{R}{S}\right)_{t}=c \times t^{H}$ \\
-$H=\frac{\log \left( \left( \frac{R}{S} \right) _{t} \right) - c}{\log(t)}$
-\end{center}
-\noindent where $c$ is a constant and the slope of the regression line ($R/S$ versus $t$ in log-log axes) approximates the Hurst exponent. Figure~\ref{fig_hurst_slope} shows the linear regression model fitted to the $R/S$ analysis of all emotion trajectories in the testing set.
-
-\begin{figure}[!htp]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/hurst_slope.png}
-\caption{A linear regression model fitted to $R/S$ analysis for all emotion trajectories in the testing set.}
-\label{fig_hurst_slope}
-\end{figure}
-
-Fig.~\ref{fig_sum_hist} plots the size of `change' between two consecutive emotion points in the activation-evaluation space for each conversation in the testing set separately. The histogram shows that the size of `change' (which is the motion within $120^{th}$ of a second) is mostly very small. However, in a few cases the size of change is bigger. In order to find the reason behind these intensity jumps (those beyond the first standard deviation), we monitored those paths of trajectories and compared them with the original videos in the dataset. We noticed that the bigger size of change in the trajectories are  false positives due to closing the eyes. We had tried to avoid this by removing the eyelid markers, but still the closing of eyes is captured by the muscles around the eyes, especially those near the eyebrows. Fig.~\ref{fig_false_pos} shows some of the false positives during transition from excitement to frustration. Fig.~\ref{fig_con_emo_traj_color_up} also shows that false positives arise due to closing the eyes. As lowering eyelids/eyebrows is one of the expressions of sadness, the outliers in the emotion space lies in the direction of sadness. It should be noted that the size of `change' refers to the size of displacement between the two consecutive points in the activation-evaluations space, not the displacement of markers on the face.
-
-\begin{figure}[!tp]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/sum_hist.png}
-\caption{The size of the `change' between two consecutive emotion points in the activation-evaluation space, for all conversations in the testing set. The maximum possible motion is 2, since the circle is radius 1.}
-\label{fig_sum_hist}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/false_pos_color.png}
-\caption{The false positives appear during transition from neutral to excited. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).}
-\label{fig_false_pos}
-\end{figure}
-
-\paragraph*{Hypotheses 2 and 3: Transitions between uncorrelated or negatively correlated emotions need to pass through the neutral state, while transitions between positively correlated emotions do not.}
-\label{para_hypothesis_2_3}
-
-According to differential emotion theory, each discrete emotion is related to certain other discrete emotions with a distinct pattern~\cite{blumberg1991patterns}. In the activation-evaluation space, emotions lie along particular angles on the basis of their similarity measures.
-
-%The neighbouring emotions (i.e., those separated by only a few degrees) are assumed to be \emph{positively correlated}, those $90\degree$ apart are considered as \emph{uncorrelated}, while those $180\degree$ apart are \emph{negatively correlated}~\cite{larsen2001can}.
-
-While looking at  continuous trajectories in the activation-evaluation space (e.g., Fig.~\ref{fig_con_emo_traj_color_up}), we noticed some patterns of emotion transitions. We fitted regression lines to the trajectories among six emotions (neutral, happiness, excitement, anger, frustration, and sadness). There are 15 possible symmetric paths among the six emotions, but the regression analysis shows that actually only nine paths are represented for all possible transitions among these emotions. For instance, the \emph{smiling} expression (getting happy) shows a linear relationship of valence and activation between neutral and happiness. The onset of smiling occurs at neutral, reaches apex at some intensity of happiness and returns to neutral for offset. In the case of \emph{laughing}, which is another expression of happiness, the same pattern repeats several times depends on its duration and intensity.
-
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[Continuous transition between excitement and frustration, which are negatively correlated emotions]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/exc_fru_color.png}
-}
-%\\
-\subfloat[Continuous transition between anger and frustration, which are positively correlated emotions]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/ang_fru_color.png}
-}
-\end{center}
-\caption{Transitions between negatively correlated emotions tend to pass through the neutral state, while transitions between positively correlated emotions do not.}
-\label{fig_e1_to_e2}
-\end{figure*}
-
-By observing the trajectories between two uncorrelated and negatively correlated emotional states, we found that the transition between these states tends to pass through the neutral state. The intensity of the current emotion must decrease to neutral (shown as linear motion along a radial line) before the intensity of the next emotion increases. Fig.~\ref{fig_e1_to_e2}(a) shows a trajectory followed by the transition from excitement to frustration. However, the positively correlated emotions (such as anger and frustration, as well as happiness and excitement) may move from one state to another with slight change in intensity and angle simultaneously, as shown in Fig.~\ref{fig_e1_to_e2}(b). These findings are also supported by the mechanical properties of facial dermal tissues~\cite{terzopoulos1990physically}. Under low stress (transition between two positively correlated emotions), dermal tissue applies low resistance to stretch as the collagen fibres uncoil in the direction of the strain. However, under high stress conditions (transition between two negatively or uncorrelated emotions), the elastin fibres behave like elastic springs to return the collagen fibres to their original no-stress condition. According to these properties, to express a very different emotion the facial muscles have to pass through a `no-stress' condition.
-
-\begin{table*}[ht!]
-\centering
-\begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|>{\centering\arraybackslash}p{2.5cm}| >{\centering\arraybackslash}p{3.2cm}|>{\centering\arraybackslash}p{2.5cm}|}
-\hline
-\multicolumn{2}{|l|}{\textbf{E1}} & \textbf{E2} & \textbf{Linear $(R^{2})$} & \textbf{Quadratic $(R^{2})$} & \textbf{Cubic $(R^{2})$} 
-\\
-\hline
-\multicolumn{6}{|c|}{\textbf{Neutral}} 
-\\
-\hline
-\multicolumn{2}{|l|}{Neu} & Ang & 0.9131 &  0.9297 & 0.9139
-\\
-\hline
-\multicolumn{2}{|l|}{Neu} & Fru & 0.9642 & 0.9854 & 0.9924
-\\
-\hline
-\multicolumn{2}{|l|}{Neu} & Hap & 0.9223 & 0.9323 & 0.9418
-\\
-\hline
-\multicolumn{2}{|l|}{Neu} & Exc &  0.9374 & 0.9383 & 0.9388
-\\
-\hline
-\multicolumn{2}{|l|}{Neu} & Sad & 0.902 &  0.9144 & 0.9164
-\\
-\hline
-\multicolumn{6}{|c|}{\textbf{Negatively Correlated Emotions}}
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Hap & 0.2897 & 0.6803 & 0.6856
-\\
-\hline
-Ang & Neu &  & 0.9595 & 0.9632 & 0.9673
-\\
-\hline
- & Neu & Hap & 0.9639 & 0.9967 & 0.997
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Exc & 0.0154 & 0.6147 & 0.6897
-\\
-\hline
-Ang & Neu &  & 0.9656 & 0.9839 & 0.984
-\\
-\hline
- & Neu & Exc & 0.8946 & 0.8969 & 0.8995
-\\
-\hline
-\multicolumn{2}{|l|}{Fru} & Hap & 0.2399 & 0.4939 & 0.4981
-\\
-\hline
-Fru & Neu &  & 0.9768 & 0.9811 & 0.9839
-\\
-\hline
- & Neu & Hap & 0.9296 & 0.9362 & 0.9684
-\\
-\hline
-\multicolumn{2}{|l|}{Fru} & Exc & 0.0504 & 0.4826 & 0.6628
-\\
-\hline
-Fru & Neu &  & 0.7357 & 0.7733 & 0.7894
-\\
-\hline
- & Neu & Exc & 0.8601 & 0.897 & 0.8983
-\\
-\hline
-\multicolumn{2}{|l|}{Sad} & Hap & 0.0604 & 0.7529 & 0.7902
-\\
-\hline
-Sad & Neu &  & 0.91 & 0.9138 & 0.9142
-\\
-\hline
- & Neu & Hap & 0.9535 & 0.9545 & 0.9548
-\\
-\hline
-\multicolumn{2}{|l|}{Sad} & Exc & 0.0564 & 0.6603 & 0.6973
-\\
-\hline
-Sad & Neu &  & 0.7915 & 0.8952 & 0.8977
-\\
-\hline
- & Neu & Exc & 0.887 & 0.9088 & 0.9092
-\\
-\hline
-\multicolumn{6}{|c|}{\textbf{Positively Correlated Emotions}}
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Fru & 0.6901 & 0.8735 & 0.8798
-\\
-\hline
-\multicolumn{2}{|l|}{Hap} & Exc & 0.6097 & 0.8481 & 0.8736
-\\
-\hline
-\multicolumn{2}{|l|}{Ang} & Sad & 0.8562 & 0.996 & 0.9858
-\\
-\hline
-\multicolumn{2}{|l|}{Fru} & Sad & 0.8177 & 0.9947 & 0.9674
-\\
-\hline
-\end{tabular}
-\caption{Coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The emotion categories are denoted as \textit{Neu} for Neutral, \textit{Ang} for Anger, \textit{Fru} for Frustration, \textit{Hap} for Happiness, \textit{Exc} for Excitement, and \textit{Sad} for Sadness}
-\label{table_models}
-\end{table*}
-
-Table~\ref{table_models} shows a comparison among the coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to each of the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The table is divided into three sections: the top one shows transitions from neutral to each of the five emotions, i.e., between neutral and anger, neutral and frustration, neutral and happiness, neutral and excitement, and neutral and sadness. For the paths from neutral to any of the five emotions, there is no significant difference among the $R^{2}$ values of linear, quadratic and cubic regression $(p>0.05)$, which implies that a linear model may be used to fit these paths.
-
-The middle section of Table~\ref{table_models} shows all paths of transitions among negatively correlated emotions, i.e., between anger and happiness, anger and excitement, frustration and happiness, frustration and excitement, sadness and happiness, and sadness and excitement. The $R^{2}$ values of linear, quadratic and cubic regression between two negatively correlated emotions show that one linear model does not fit well to these paths, while the quadratic and cubic models fit relatively better than one linear model. However, it is clear that the two linear models fit significantly better than the one linear, one quadratic, or one cubic model separately. The table shows the $R^{2}$ values of both paths of transition between two negatively correlated emotions, e.g., one directly from anger to happiness and the other from anger to neutral and then from neutral to happiness. This suggests that the negatively correlated emotions tends to pass through the neutral state while transitioning from one state to another.
-
-The last section of Table~\ref{table_models} shows all transitions among positively correlated emotions, i.e., between anger and frustration, happiness and excitement, anger and sadness, and frustration and sadness. For the path between these neighbouring emotions, the quadratic regression is better than the linear regression. Moreover, there is no significant difference between quadratic and cubic regressions, which implies that the quadratic model may be used to fit the trajectories between the two neighbouring emotions into the activation-evaluation space. This suggests that the positively correlated emotions can move from one state to another with a slight change in intensity and angle simultaneously.
-
-In the activation-evaluation space, the travel along the emotion flows/trajectories is a matter of intensity change and the angle change. As already discussed, the emotion trajectories follow `common' paths, which in turn suggests that there exists some relationship between the intensity change and angle change through time. In order to analyse this relationship, we plot the polar coordinates ($\dot{r}$: changing intensity, $\dot{\theta}$: changing emotion) of continuous points in the space during emotion transitions. Fig.~\ref{fig_controlchart} consists of four subplots, the first and second subplots show $r$ and $\theta$ respectively. In these plots, the three horizontal lines represent the mean $(\mu)$ and mean $\pm$ 1 standard deviation $\sigma$. The third and fourth subplots show change versus no-change using a binary plot by applying the following rules to the time derivatives $(\dot{r_{t}},\dot{\theta_{t}})$ of $(r,\theta)$ respectively (where the $t$ index represents the $t^{th}$ element of the time series):
-
-\begin{center}
-$f(\dot{\theta_{t}}) = \left\{ \begin{array}{ll}
-0, 	&	 \text{if } \mu_{\dot{\theta_{t}}}-\sigma_{\dot{\theta_{t}}}<\dot{\theta_{t}}<\mu_{\dot{\theta_{t}}}+\sigma_{\dot{\theta_{t}}} \\ 
-1, 	&	 \text{otherwise}
-\end{array}\right.$ \\
-$f(\dot{r_{t}}) = \left\{ \begin{array}{ll}
-0, 	&	 \text{if } \mu_{\dot{r_{t}}}-2\sigma_{\dot{r_{t}}}<\dot{r_{t}}<\mu_{\dot{r_{t}}}+2\sigma_{\dot{r_{t}}} \\ 
-1, 	&	 \text{otherwise}
-\end{array}\right.$
-\end{center}
-
-Fig.~\ref{fig_controlchart} shows that there is a relationship between angle change and intensity change such that whenever there is a large `change' in angle (according to the given rules), the intensity decreases.
-
-\begin{figure*}[!t]
-\begin{center}
-{
-\centering
-\includegraphics[width=1\textwidth]{figures/Ch7/6750_6950_change_1.png} (a)
-}
-\\
-{
-\centering
-\includegraphics[width=1\textwidth]{figures/Ch7/7500_7600_change.png} (b)
-}
-\end{center}
-\caption{Ses01F$\_$impro01, continuous frames during emotion transition from anger to happiness. The temporal relationship between intensity change and angle change can be seen in the set of frames (a) from 6750 to 6950, and (b) from 7500 to 7600. For explanation, see the text.}
-\label{fig_controlchart}
-\end{figure*}
 
 \section{Results}
 \label{sec_results}
@@ -1576,92 +762,299 @@ With Normalisation & 56.1678 & 78.9750
 %\label{fig_with_norm_depen_vs_indepen}
 %\end{figure*}
 
+\section{Analysis of Emotion Dynamics}
+\label{sec_analysis}
+The research related to the study of `discrete emotion dynamics' focuses mainly on the detection of four temporal segments: neutral, where there is no sign of activation of any facial expression; the onset of a facial expression, when the muscular contraction begins and increases in intensity; the apex, which is the peak where the intensity reaches a stable level; and the offset, which is the relaxation of the muscular action back to the neutral state.
+
+However, emotions are not discrete: they continuously change over time due to their natural progression, external stimuli, and the way the face works. Naturally, emotions fade in their intensity with time~\cite{ritchie2009fading}: the intense anger that might have been accompanied by betrayal by a close friend might provoke a milder response when recalled after weeks or months. Similarly, the intense feeling of joy accompanied by winning a championship might provoke a milder sense of happiness when looking at the event's photos weeks or months later. Also, research shows that a noticeable change in emotions is brought about by an external stimulus, e.g., the behaviours of others, or a change in the current situation, or internal stimuli such as thoughts or memories~\cite{scherer2000psychological}. 
+
+In addition, emotional \emph{expressions} change based on the mechanical properties of facial skin. The facial dermal tissues comprise collagen $(72\%)$ and elastin $(4\%)$ fibres which help resist deformation of tissues. Therefore, the facial tissues effected by the active muscle activity caused by emotion expressions need to relax before stretching to another form (i.e., expressing another emotion)~\cite{terzopoulos1990physically}. Moreover, emotions are related to each other in a systematic manner which guides the way emotions go through transition from one state to another. For example, the transition from anger to frustration is more common than the transition from anger to happiness.
+
+So far, none of the computational studies have focused on the temporal analysis of `continuous emotions dynamics' in order to understand the relationships between different emotions and the paths followed by emotions while moving from one state to another (i.e., emotion trajectories).
+
+This paper addresses these problems by taking into account continuous spontaneous expressions of emotions. It focuses on the study of complex emotions as the weighted set of basic emotions, considering their relationships with each other. In addition, this paper presents ways to study the temporal dynamics of continuous emotions in order to get insight about the emotion trajectories and the corresponding intensity variations over time.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Ch7/con_emo_traj_color_up.png}
+\caption{The mapping of continuous emotions during a conversation (Ses01F$\_$impro01) into the activation-evaluation space. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).}
+\label{fig_con_emo_traj_color_up}
+\end{figure}
+
+
+% Edit the figure name and give this description in the results section
+
+The paths of emotional expressions are observed in the activation-evaluation space. Fig.~\ref{fig_con_emo_traj_color_up} shows the mapping of continuous emotions through time corresponding to an unsegmented conversation in the activation-evaluation space (using the methods described in Section~\ref{sec_methodology}). The colour variation represents time, ranging from red (dark in grayscale) to yellow (light in grayscale). The figure shows some sequence information in the transition from one emotion state to another. Also, we already knew the mechanical properties of facial dermal tissues and that the emotions are related to each other in a systematic manner, as discussed in Section~\ref{sec:introduction}. All these facts and findings motivated us to computationally analyse the paths of emotions while transitioning from one state to another. We propose the following hypotheses about the emotion paths representation in the activation-evaluation space:
+
+\begin{enumerate}
+\item The paths among emotions form `smooth' trajectories in the space.
+\item If the end-point emotions are not positively correlated, then the path goes through the neutral state.
+\item If the end-point emotions are positively correlated, then the path does not go through the neutral state.
+\end{enumerate}
+
+Positively correlated emotions are those that lie close to each other (less than $90\degree$ divergence) in the activation-evaluation space. Uncorrelated emotions correspond to the emotions that lie at $90\degree$ divergence, while the negatively correlated emotions corresponds to the emotions which are $180\degree$ apart in the activation-evaluation space. 
+
+\subsection{Hypotheses Testing}
+\label{sec_hypotheses_testing}
+
+Within the following section the methods used to test the proposed hypotheses are presented, together with the results of those tests.
+
+\paragraph*{Hypothesis 1: The paths among emotions form `smooth' trajectories in the space.}
+\label{para_hypothesis_1}
+
+In order to test the first hypothesis,  we first need to define `smoothness' of an emotion trajectory. After extensive review of the literature, we could not find any standard definition. However, if we consider an emotion trajectory as a time series (sequence of values at successive time points following a non-random order), then its smoothness may be defined as a measure of its persistence with time. A random time series, e.g., Brownian motion, is not smooth, as it is not persistent with time. On the basis of this definition, we may say that if the points in the emotion space move in a predictable manner then the resulting trajectory is smooth/persistent with time.
+
+We measure the smoothness of emotion points trajectories in the activation-evaluation space using two approaches: \emph{first}, by measuring the time derivative of angular displacement (angular velocity) and \emph{second}, by estimating the Hurst exponent ($H$)~\cite{qian2004hurst}. The time derivative of angular displacement determines the change in the angle with time; the smaller the change, the smoother the trajectory and vice-versa. It is approximated by:
+
+\begin{center}
+$\dot{\theta_{t}}=\theta_{t}-\theta_{t-1}$  \\
+\end{center}
+
+\noindent where $t=2,3,\cdots,n$ and $n=$ total number of frames in the video. We plotted the time derivatives of angular displacement of the emotion points during each conversation in the testing set and got smaller values that imply smooth emotion trajectories~\cite{ayesha hakim analysis paper}.
+
+The Hurst exponent is a statistical measure of persistence and predictability of a time series, calculated by rescaled range $\left(\frac{R_{t}}{S_{t}}\right)$ analysis, where $R_{t}$ is the rescaled range and $S_{t}$ is the standard deviation of the time series. The calculation of the rescaled range $R_{t}$ of the time series will be described shortly. The greater the value of $H$ $(0.5<H<1)$, the smoother the time series, $H=0.5$ means a random time series. We plotted the the Hurst exponent as a measure of smoothness of emotion trajectories in the activation-evaluation space for each conversation in the testing set and got all values close to $1$~\cite{ayesha hakim analysis paper}. We estimated $H$ for the time series representing the size of `change' between pairs of consecutive points in the space as a function of valence and activation. Suppose $X_{t}$ denotes the time series where $t=2,3,\cdots,n$ and $n=$ total number of frames in the video. The size of `change' for each frame is calculated as the Euclidean distance between the time derivative of valence $(\dot{V_{t}})$ and the time derivative of activation $(\dot{A_{t}})$ in the activation-evaluation space:
+
+%\begin{center}
+%$\dot{V_{t}}=\parallel V_{t}-V_{t-1} \parallel$  \\
+%$\dot{A_{t}}=\parallel A_{t}-A_{t-1} \parallel$ \\
+%\end{center}
+\begin{center}
+$\dot{V_{t}}= V_{t}-V_{t-1} $  \\
+$\dot{A_{t}}= A_{t}-A_{t-1} $ \\
+\end{center}
+
+\noindent where the $t$ index represents the $t^{th}$ element of the time series.
+
+\begin{equation}
+\label{eq_size_of_change}
+\text{size of change}=\sqrt{\dot{V_{t}}^{2}+\dot{A_{t}}^{2}}
+\end{equation}
+
+\noindent The rescaled range $R_{t}$ of time series $(X_{t})$ is calculated by:
+
+\begin{enumerate}
+\item Calculate the mean-centred time series $Y_{t}=X_{t}-\mu$, where $\mu$ is the mean of the time series.
+\item Calculate the cumulative sum of $Y_{t}$,
+\begin{center}
+$Z_{t}=\sum \limits_{i=1}^t Y_{i}$
+\end{center}
+\item Calculate the rescaled range $R_{t}$ of time series,
+\begin{center}
+$R_{t}=\max(Z_{1}, Z_{2}, \cdots, Z_{t}) - \min(Z_{1}, Z_{2}, \cdots, Z_{t})$
+\end{center}
+\end{enumerate}
+
+\noindent $S_{t}$ is the standard deviation of the time series. The ratio $\frac{R_{t}}{S_{t}}$ scales as a power law with time so that:
+\begin{center}
+%$\left(\frac{R}{S}\right)_{t}=c \times t^{H}$ \\
+$H=\frac{\log \left( \left( \frac{R}{S} \right) _{t} \right) - c}{\log(t)}$
+\end{center}
+\noindent where $c$ is a constant and the slope of the regression line ($R/S$ versus $t$ in log-log axes) approximates the Hurst exponent. Figure~\ref{fig_hurst_slope} shows the linear regression model fitted to the $R/S$ analysis of all emotion trajectories in the testing set.
+
+\begin{figure}[!htp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Ch7/hurst_slope.png}
+\caption{A linear regression model fitted to $R/S$ analysis for all emotion trajectories in the testing set.}
+\label{fig_hurst_slope}
+\end{figure}
+
+We calculated the size of `change' between two consecutive emotion points in the activation-evaluation space for each conversation in the testing set separately and found that the size of `change' (which is the motion within $120^{th}$ of a second) is mostly very small. However, in a few cases the size of change is bigger. In order to find the reason behind these intensity jumps (those beyond the first standard deviation), we monitored those paths of trajectories and compared them with the original videos in the dataset. We noticed that the bigger size of change in the trajectories are  false positives due to closing the eyes. We had tried to avoid this by removing the eyelid markers, but still the closing of eyes is captured by the muscles around the eyes, especially those near the eyebrows. Fig.~\ref{fig_false_pos} shows some of the false positives during transition from excitement to frustration. As lowering eyelids/eyebrows is one of the expressions of sadness, the outliers in the emotion space lies in the direction of sadness. It should be noted that the size of `change' refers to the size of displacement between the two consecutive points in the activation-evaluations space, not the displacement of markers on the face.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Ch7/false_pos_color.png}
+\caption{The false positives appear during transition from neutral to excited. The movement of emotions through time is represented by changing colour spectrum from dark/red (start) to light/yellow (end).}
+\label{fig_false_pos}
+\end{figure}
+
+\paragraph*{Hypotheses 2 and 3: Transitions between uncorrelated or negatively correlated emotions need to pass through the neutral state, while transitions between positively correlated emotions do not.}
+\label{para_hypothesis_2_3}
+
+According to differential emotion theory, each discrete emotion is related to certain other discrete emotions with a distinct pattern~\cite{blumberg1991patterns}. In the activation-evaluation space, emotions lie along particular angles on the basis of their similarity measures.
+
+% Update the figure name
+
+While looking at  continuous trajectories in the activation-evaluation space (e.g., Fig.~\ref{fig_con_emo_traj_color_up}), we noticed some patterns of emotion transitions. We fitted regression lines to the trajectories among six emotions (neutral, happiness, excitement, anger, frustration, and sadness). There are 15 possible symmetric paths among the six emotions, but the regression analysis shows that actually only nine paths are represented for all possible transitions among these emotions. For instance, the \emph{smiling} expression (getting happy) shows a linear relationship of valence and activation between neutral and happiness. The onset of smiling occurs at neutral, reaches apex at some intensity of happiness and returns to neutral for offset. In the case of \emph{laughing}, which is another expression of happiness, the same pattern repeats several times depends on its duration and intensity.
+
+\begin{figure*}[!htp]
+\begin{center}
+\subfloat[Continuous transition between excitement and frustration, which are negatively correlated emotions]
+{
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Ch7/exc_fru_color.png}
+}
+%\\
+\subfloat[Continuous transition between anger and frustration, which are positively correlated emotions]
+{
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Ch7/ang_fru_color.png}
+}
+\end{center}
+\caption{Transitions between negatively correlated emotions tend to pass through the neutral state, while transitions between positively correlated emotions do not.}
+\label{fig_e1_to_e2}
+\end{figure*}
+
+By observing the trajectories between two uncorrelated and negatively correlated emotional states, we found that the transition between these states tends to pass through the neutral state. The intensity of the current emotion must decrease to neutral (shown as linear motion along a radial line) before the intensity of the next emotion increases. Fig.~\ref{fig_e1_to_e2}(a) shows a trajectory followed by the transition from excitement to frustration. However, the positively correlated emotions (such as anger and frustration, as well as happiness and excitement) may move from one state to another with slight change in intensity and angle simultaneously, as shown in Fig.~\ref{fig_e1_to_e2}(b). These findings are also supported by the mechanical properties of facial dermal tissues~\cite{terzopoulos1990physically}. Under low stress (transition between two positively correlated emotions), dermal tissue applies low resistance to stretch as the collagen fibres uncoil in the direction of the strain. However, under high stress conditions (transition between two negatively or uncorrelated emotions), the elastin fibres behave like elastic springs to return the collagen fibres to their original no-stress condition. According to these properties, to express a very different emotion the facial muscles have to pass through a `no-stress' condition.
+
+\begin{table*}[ht!]
+\centering
+\begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|>{\centering\arraybackslash}p{2.5cm}| >{\centering\arraybackslash}p{3.2cm}|>{\centering\arraybackslash}p{2.5cm}|}
+\hline
+\multicolumn{2}{|l|}{\textbf{E1}} & \textbf{E2} & \textbf{Linear $(R^{2})$} & \textbf{Quadratic $(R^{2})$} & \textbf{Cubic $(R^{2})$} 
+\\
+\hline
+\multicolumn{6}{|c|}{\textbf{Neutral}} 
+\\
+\hline
+\multicolumn{2}{|l|}{Neu} & Ang & 0.9131 &  0.9297 & 0.9139
+\\
+\hline
+\multicolumn{2}{|l|}{Neu} & Fru & 0.9642 & 0.9854 & 0.9924
+\\
+\hline
+\multicolumn{2}{|l|}{Neu} & Hap & 0.9223 & 0.9323 & 0.9418
+\\
+\hline
+\multicolumn{2}{|l|}{Neu} & Exc &  0.9374 & 0.9383 & 0.9388
+\\
+\hline
+\multicolumn{2}{|l|}{Neu} & Sad & 0.902 &  0.9144 & 0.9164
+\\
+\hline
+\multicolumn{6}{|c|}{\textbf{Negatively Correlated Emotions}}
+\\
+\hline
+\multicolumn{2}{|l|}{Ang} & Hap & 0.2897 & 0.6803 & 0.6856
+\\
+\hline
+Ang & Neu &  & 0.9595 & 0.9632 & 0.9673
+\\
+\hline
+ & Neu & Hap & 0.9639 & 0.9967 & 0.997
+\\
+\hline
+\multicolumn{2}{|l|}{Ang} & Exc & 0.0154 & 0.6147 & 0.6897
+\\
+\hline
+Ang & Neu &  & 0.9656 & 0.9839 & 0.984
+\\
+\hline
+ & Neu & Exc & 0.8946 & 0.8969 & 0.8995
+\\
+\hline
+\multicolumn{2}{|l|}{Fru} & Hap & 0.2399 & 0.4939 & 0.4981
+\\
+\hline
+Fru & Neu &  & 0.9768 & 0.9811 & 0.9839
+\\
+\hline
+ & Neu & Hap & 0.9296 & 0.9362 & 0.9684
+\\
+\hline
+\multicolumn{2}{|l|}{Fru} & Exc & 0.0504 & 0.4826 & 0.6628
+\\
+\hline
+Fru & Neu &  & 0.7357 & 0.7733 & 0.7894
+\\
+\hline
+ & Neu & Exc & 0.8601 & 0.897 & 0.8983
+\\
+\hline
+\multicolumn{2}{|l|}{Sad} & Hap & 0.0604 & 0.7529 & 0.7902
+\\
+\hline
+Sad & Neu &  & 0.91 & 0.9138 & 0.9142
+\\
+\hline
+ & Neu & Hap & 0.9535 & 0.9545 & 0.9548
+\\
+\hline
+\multicolumn{2}{|l|}{Sad} & Exc & 0.0564 & 0.6603 & 0.6973
+\\
+\hline
+Sad & Neu &  & 0.7915 & 0.8952 & 0.8977
+\\
+\hline
+ & Neu & Exc & 0.887 & 0.9088 & 0.9092
+\\
+\hline
+\multicolumn{6}{|c|}{\textbf{Positively Correlated Emotions}}
+\\
+\hline
+\multicolumn{2}{|l|}{Ang} & Fru & 0.6901 & 0.8735 & 0.8798
+\\
+\hline
+\multicolumn{2}{|l|}{Hap} & Exc & 0.6097 & 0.8481 & 0.8736
+\\
+\hline
+\multicolumn{2}{|l|}{Ang} & Sad & 0.8562 & 0.996 & 0.9858
+\\
+\hline
+\multicolumn{2}{|l|}{Fru} & Sad & 0.8177 & 0.9947 & 0.9674
+\\
+\hline
+\end{tabular}
+\caption{Coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The emotion categories are denoted as \textit{Neu} for Neutral, \textit{Ang} for Anger, \textit{Fru} for Frustration, \textit{Hap} for Happiness, \textit{Exc} for Excitement, and \textit{Sad} for Sadness}
+\label{table_models}
+\end{table*}
+
+Table~\ref{table_models} shows a comparison among the coefficient of determination $(R^{2})$ of linear, quadratic, and cubic polynomial regression models fitted to each of the fifteen symmetric paths of emotion transitions into the activation-evaluation space. The table is divided into three sections: the top one shows transitions from neutral to each of the five emotions, i.e., between neutral and anger, neutral and frustration, neutral and happiness, neutral and excitement, and neutral and sadness. For the paths from neutral to any of the five emotions, there is no significant difference among the $R^{2}$ values of linear, quadratic and cubic regression $(p>0.05)$, which implies that a linear model may be used to fit these paths.
+
+The middle section of Table~\ref{table_models} shows all paths of transitions among negatively correlated emotions, i.e., between anger and happiness, anger and excitement, frustration and happiness, frustration and excitement, sadness and happiness, and sadness and excitement. The $R^{2}$ values of linear, quadratic and cubic regression between two negatively correlated emotions show that one linear model does not fit well to these paths, while the quadratic and cubic models fit relatively better than one linear model. However, it is clear that the two linear models fit significantly better than the one linear, one quadratic, or one cubic model separately. The table shows the $R^{2}$ values of both paths of transition between two negatively correlated emotions, e.g., one directly from anger to happiness and the other from anger to neutral and then from neutral to happiness. This suggests that the negatively correlated emotions tends to pass through the neutral state while transitioning from one state to another.
+
+The last section of Table~\ref{table_models} shows all transitions among positively correlated emotions, i.e., between anger and frustration, happiness and excitement, anger and sadness, and frustration and sadness. For the path between these neighbouring emotions, the quadratic regression is better than the linear regression. Moreover, there is no significant difference between quadratic and cubic regressions, which implies that the quadratic model may be used to fit the trajectories between the two neighbouring emotions into the activation-evaluation space. This suggests that the positively correlated emotions can move from one state to another with a slight change in intensity and angle simultaneously.
+
+In the activation-evaluation space, the travel along the emotion flows/trajectories is a matter of intensity change and the angle change. As already discussed, the emotion trajectories follow `common' paths, which in turn suggests that there exists some relationship between the intensity change and angle change through time. In order to analyse this relationship, we plot the polar coordinates ($\dot{r}$: changing intensity, $\dot{\theta}$: changing emotion) of continuous points in the space during emotion transitions. Fig.~\ref{fig_controlchart} consists of two subplots showing $r$ and $\theta$ respectively. In these plots, the three horizontal lines represent the mean $(\mu)$ and mean $\pm$ 1 standard deviation $\sigma$. The third and fourth subplots show change versus no-change using a binary plot by applying the following rules to the time derivatives $(\dot{r_{t}},\dot{\theta_{t}})$ of $(r,\theta)$ respectively (where the $t$ index represents the $t^{th}$ element of the time series):
+
+\begin{center}
+$f(\dot{\theta_{t}}) = \left\{ \begin{array}{ll}
+0, 	&	 \text{if } \mu_{\dot{\theta_{t}}}-\sigma_{\dot{\theta_{t}}}<\dot{\theta_{t}}<\mu_{\dot{\theta_{t}}}+\sigma_{\dot{\theta_{t}}} \\ 
+1, 	&	 \text{otherwise}
+\end{array}\right.$ \\
+$f(\dot{r_{t}}) = \left\{ \begin{array}{ll}
+0, 	&	 \text{if } \mu_{\dot{r_{t}}}-2\sigma_{\dot{r_{t}}}<\dot{r_{t}}<\mu_{\dot{r_{t}}}+2\sigma_{\dot{r_{t}}} \\ 
+1, 	&	 \text{otherwise}
+\end{array}\right.$
+\end{center}
+
+Fig.~\ref{fig_controlchart} shows that there is a relationship between angle change and intensity change such that whenever there is a large `change' in angle (according to the given rules), the intensity decreases.
+
+\begin{figure*}[!t]
+\begin{center}
+{
+\centering
+\includegraphics[width=1\textwidth]{figures/Ch7/6750_6950_change_1.png} (a)
+}
+\end{center}
+\caption{Ses01F$\_$impro01, continuous frames during emotion transition from anger to happiness. The temporal relationship between intensity change and angle change can be seen in the frames from 6750 to 6950. For explanation, see the text.}
+\label{fig_controlchart}
+\end{figure*}
+
 \section{Discussion}
 \label{sec_discussion}
 
-This paper has presented our direct classification approach for discrete basic emotion recognition. Based on the observations that some emotions are better expressed by the upper part of face and some by the lower part, we proposed to develop separate shape models for upper and lower regions of face. Our joint face model worked well, producing robust results which are more accurate than the individual human observers, who assigned more than one emotion label to each turn. We compared the results of our system with the majority label out of more than three labels assigned by three human evaluators.
+This paper has presented our approach to map facial points to an appropriate emotion-space to analyse the paths of emotions while moving from one state to another. We develop a shape model for both speaker-dependent and speaker-independent discrete emotion recognition. It give us the distance of each frame from five emotion states and the neutral state. We perform speaker-reference based normalisation to minimise the effect of speaker-face variability. We compared the results of our system with the majority label out of more than three labels assigned by three human evaluators and the speaker-independent model gives highest recognition accuracy after reference-based normalisation.
 
-The research in psychology has shown that in everyday interactions people exhibit non-basic, intermediate, or complex emotional states which are related to each other in a systematic manner. Based on this, it is not appropriate to assign a single independent categorical label to complex emotions which are mixtures of more than one emotion category.
-%As discussed in Chapters 2 and 3, giving a discrete name to emotions is not always possible, since in daily life we come across a lot of complex emotional states that cannot be given a discrete name. 
-Also, sometimes the difference between two or more emotions is so subtle that it becomes difficult to finely differentiate between them. The same thing we observed in our data. Consider Fig.~\ref{fig_waves}(a) showing Mahalanobis distance of the testing frames in sequence with time to each of the clusters of anger, sadness, and happiness. The ground truth label of this utterance is anger/frustration, anger/frustration, sadness by three observers. It is clear that the distance of the last few testing frames to sadness and anger is so small that it seems inappropriate to assign a single label based on the minimum distance criteria. Due to this ambiguity, human evaluators assigned more than one categorical label to each turn. The unknown emotion seems to be a blend of sadness and anger/frustration. In Fig.~\ref{fig_waves}(b), the distance of the testing frames (ground-truth: sad, sad/neu, neu) from sadness and neutral is swapping after small intervals of time. %Similarly, in Fig.~\ref{fig_waves}(c) the distance of the testing frames (ground-truth: exc, hap, hap/fru) to the happiness, excitement, and frustration clusters is almost equal. Due to this ambiguity, human evaluators assigned more than one categorical label to each turn.
+The research in psychology has shown that in everyday interactions people exhibit non-basic, intermediate, or complex emotional states which are related to each other in a systematic manner. Based on this, it is not appropriate to assign a single independent categorical label to complex emotions which are mixtures of more than one emotion category. Also, sometimes the difference between two or more emotions is so subtle that it becomes difficult to finely differentiate between them. Due to this ambiguity, human evaluators assigned more than one categorical label to each turn.
 
-Motivated by these thoughts, we extend this research in~\cite{hakim2013vonmises} to address the problem of spontaneous emotion recognition by mapping them into the emotion space. Instead of classifying the emotions to one emotion category based on the best-matched criteria, we would be adding the effect of all basic emotions for the recognition of complex emotions. The effect of intensity will also be considered since in Fig.~\ref{fig_waves}(b) it seems that the subject is expressing sad emotion with low intensity (close to neutral state). Due to the robustness to mislabelled data and satisfactory recognition rate, the joint face model of basic emotion recognition is a reliable approach to be extended further to complex emotion recognition.
-
-\begin{figure*}[th!]
-\centering
-		\subfloat[The Mahalanobis Distances of testing frames (ground-truth: ang/fru, ang/fru, sad) to the happiness, anger, and sadness clusters]
-		{
-		\centering 
-		\includegraphics[width=1\textwidth]{figures/Ch5/ang_hap_sad_wave.png}
-		}
-		\\
-		\subfloat[The Mahalanobis Distances of testing frames (ground-truth: sad, sad/neu, neu) to the neutral, sadness, anger, and frustration clusters]
-		{
-		\centering 
-		\includegraphics[width=1\textwidth]{figures/Ch5/neu_sad_ang_fru_waves.png}
-		}
-%		\\
-%		\subfloat[The Mahalanobis Distances of testing frames (ground-truth: exc, hap, hap/fru) to the anger, happiness, excitement, and frustration clusters]
-%		{
-%		\centering 
-%		\includegraphics[width=1\textwidth]{figures/Ch5/ang_hap_exc_fru_sad.png}
-%		}
-\caption{Some examples of emotion blends.}
-\label{fig_waves}
-\end{figure*}
+Motivated by these thoughts, in this paper we address the problem of spontaneous complex emotion recognition by mapping them into the emotion space. Instead of classifying the emotions to one emotion category based on the best-matched criteria, we add the effect of all basic emotions for the recognition of complex emotions. 
 
 Using the von Mises mixture model, we presented a technique for the recognition and representation of complex emotions in the activation-evaluation space. The proposed method is based on the psychological assumption that complex emotions are comprised of mixtures of basic emotions. There is still debate among psychologists on the number of basic emotions and which emotions should be considered as basic, and of the six emotions that we have considered two (frustration and excitement) are candidate basic emotions. However, the proposed mixture model is quite flexible and can be applied to any set of basic emotions. We estimated the degree of similarity of each test frame to each of the basic emotions and project them into the activation-evaluation space using the von Mises mixture model.
 
-In this paper, each continuous conversation is mapped into the activation-evaluation space frame by frame. However, we know that emotions are related to each other in a systematic manner which guides the way emotions go through transition from one state to another~\cite{blumberg1991patterns}. In order to understand the relationships among different emotions and the paths followed by emotions while moving from one state to another (i.e., emotion trajectories), we have extended this work to the computational analysis of continuous emotion trajectories in the activation-evaluation space~\cite{hakim2013analysis}. Emotions vary in intensity, flow, persistence with time, and their relationships with other emotions. By analysing the emotion dynamics through time, we try to seek the answers about the `common' paths between emotions, the smoothness of emotion trajectories, and how we travel along emotion flows. The computational analysis of emotion dynamics may be helpful for better understanding of emotion trajectories as well as in the development of more flexible models for emotion recognition, representation, and synthesis.
+Using von Mises mixture model, each continuous conversation is mapped into the activation-evaluation space frame by frame. However, we know that emotions are related to each other in a systematic manner which guides the way emotions go through transition from one state to another~\cite{blumberg1991patterns}. In order to understand the relationships among different emotions and the paths followed by emotions while moving from one state to another (i.e., emotion trajectories), we extended this work to the computational analysis of continuous emotion trajectories in the activation-evaluation space~\ref{sec_analysis}. Emotions vary in intensity, flow, persistence with time, and their relationships with other emotions. By analysing the emotion dynamics through time, we try to seek the answers about the `common' paths between emotions, the smoothness of emotion trajectories, and how we travel along emotion flows. The computational analysis of emotion dynamics may be helpful for better understanding of emotion trajectories as well as in the development of more flexible models for emotion recognition, representation, and synthesis.
 
-In this chapter, we have presented an analysis of emotion trajectories in the activation-evaluation space based on shape models of facial points. On the basis of trajectory-level analysis, we evaluated some hypotheses related to the smoothness of emotion trajectories, and the `common' paths among emotions based on their correlation.
+Section~\ref{sec_analysis} presented an analysis of emotion trajectories in the activation-evaluation space based on shape models of facial points. On the basis of trajectory-level analysis, we evaluated some hypotheses related to the smoothness of emotion trajectories, and the `common' paths among emotions based on their correlation.
 
 By measuring the size of `change' between two consecutive frames, we found that the emotions move in a continuous flow, which implies that there are no sudden jumps within the trajectories. Further, we measured the smoothness of continuous emotion trajectories on the basis of the time derivative of angular displacement and the estimated Hurst exponent, which suggests that the emotion trajectories are smooth and persistent with time.
 
 By visualising the emotion trajectories, we observed that there are 15 possible symmetric paths among the six emotions in the activation-evaluation space. To test it, we fitted regression lines to the trajectories and found that there are actually only 9 symmetric paths to travel among these six emotions. We showed that a linear model fits well to the trajectories between neutral and any of the other five emotions. The trajectories between uncorrelated and negatively correlated emotions cannot be fitted with one linear model, however, two linear models are better fitted than one quadratic or cubic regression model. A quadratic regression model fits well to the trajectories between positively correlated emotions. 
 
-%We showed that the trajectories between uncorrelated and negatively correlated emotions can be fitted with straight lines, while the trajectories between positively correlated emotions are fitted well by a quadratic regression model. 
-
 By analysing the relationship between the change in angle and change in intensity, we may conclude that the transition between negatively correlated or uncorrelated emotions causes a decrease in intensity, while the transition between positively correlated emotions may occur with a slight change in intensity and angle simultaneously. 
-
-%\begin{figure}[!tp]
-%\centering
-%\includegraphics[width=0.5\textwidth]{figures/Ch7/snapshot_laugh.png}
-%\caption{A synchronised frame-by-frame comparison of videos from the dataset and the corresponding mapped emotions into the activation-evaluation space. The snapshot shows the \textit{laughing} expression during a happy conversation mapped as \textit{excitement} of high intensity on the space. The female actor was being recorded.}
-%\label{fig_laugh}
-%\end{figure}
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=0.5\textwidth]{figures/Ch7/snapshot_taunt_1.png}
-%\caption{The sarcastic expression lead to an abnormal transition towards happiness during an angry conversation. The female actor was being recorded.}
-%\label{fig_taunt}
-%\end{figure}
-
-\begin{figure*}[!htp]
-\begin{center}
-\subfloat[A synchronised frame-by-frame comparison of videos from the dataset and the corresponding mapped emotions into the activation-evaluation space. The snapshot shows the \textit{laughing} expression during a happy conversation mapped as \textit{excitement} of high intensity on the space. The female actor was being recorded.]
-{
-\centering
-\includegraphics[width=0.5\textwidth]{figures/Ch7/snapshot_laugh.png}
-}
-%\\
-\subfloat[The sarcastic expression lead to an abnormal transition towards happiness during an angry conversation. The female actor was being recorded.]
-{
-\centering
-\includegraphics[width=0.495\textwidth]{figures/Ch7/snapshot_taunt_1.png}
-}
-\end{center}
-\caption{Transitions between negatively correlated emotions tend to pass through the neutral state, while transitions between positively correlated emotions do not.}
-\label{fig_snapshots}
-\end{figure*}
-
-The frame-by-frame comparison between the emotion trajectories and that of the original videos from the dataset helps to find reasons of some `abnormal' trajectories. Fig.~\ref{fig_snapshots}(a) shows a snapshot of a synchronised side-by-side comparison of the original videos from the dataset and the corresponding mapped emotions on the activation-evaluation space during a spontaneous conversation. The ground truth emotion labels by the human observers are displayed at the top and the transcriptions are displayed at the bottom to give an idea about the interaction context through time. We noticed some interesting trajectories which might help to understand natural emotional behaviour during face-to-face conversations. For example, during an angry conversation an abnormal transition towards happiness was caused by a \textit{sarcastic} gesture (as shown in Fig.~\ref{fig_snapshots}(b)).
 
 The presented analysis might be used and extended in several directions, such as examining the `abnormal' paths of emotions, which might give some cues about underlying deception, or some illness. The mapping of continuous trajectories to the activation-evaluation space might be a useful tool to build emotional conversation agents displaying realistic emotions and going through smooth emotion transitions.
 
-
 \section*{Acknowledgments}
-This work was supported by funds from the Higher Education Commission (HEC) Pakistan. The authors would like to thank Massey University Smart Environments (MUSE) group for providing useful feedback and support throughout the research.
+This work was supported by funds from the Higher Education Commission (HEC) Pakistan. The authors would like to thank Massey University for providing support throughout the research.
 
 %This paper is an extension of the paper "A Robust Joint Face Model for Human Emotion Recognition"~\cite{hakim12} published in IVCNZ, 2013.
 
